@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Software Engineering WS 24/25 Lecture Notes"
+  title: "Software Engineering Lecture Notes WS 24/25 "
   author: "Igor Dimitrov"
   date: "10/14/2024"
   chapters:
