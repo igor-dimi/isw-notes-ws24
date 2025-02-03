@@ -2,11 +2,36 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Software Engineering WS 24/25 Lecture Notes",
+    "title": "Software Engineering Lecture Notes WS 24/25",
     "section": "",
-    "text": "Preface\nLecture notes for the course “Software Engineering” at Heidelberg University WS24/25.",
-    "crumbs": [
-      "Preface"
-    ]
+    "text": "Preface\nLecture notes for the course “Software Engineering” at Heidelberg University WS24/25."
+  },
+  {
+    "objectID": "index.html#chapters",
+    "href": "index.html#chapters",
+    "title": "Software Engineering Lecture Notes WS 24/25",
+    "section": "Chapters",
+    "text": "Chapters\n\nIntroduction\nCommunication in a Project\nRequirements Engineering (Communication with the Users)\nDesign (Communication with Developers)\nQuality Management\nEvolution\nSWE-Process (Summary and Project Management)"
+  },
+  {
+    "objectID": "02/02.html",
+    "href": "02/02.html",
+    "title": "Software Engineering Lecture Notes WS 24/25 ",
+    "section": "",
+    "text": "## Communication in a Project\nFollowing topics relate to and determine communication within a project:\n\nNumber of participants and their roles in the project\nType of the contractual relationship\nTeam Organisation: The way developers communicate within the project\nCollaborative Coding"
+  },
+  {
+    "objectID": "03/03.html",
+    "href": "03/03.html",
+    "title": "3  Requirements Engineering",
+    "section": "",
+    "text": "requirements engineering can be understood as corresponding to the communication with the users / clients. Deals with the following topics\n\nIntroduction to communication with users/clients.\n\nClients and Requirements\nDescription and specification of requirements\nDefining Requirements Engineering\nOutcome of Requirements Engineering\nBenefit of specification\nComplexities of RE\n\nUsage modelling / description\n\nIntroductory Example\nIntroduction\nTasks, Roles, Persona\nDomain Data\nFunctions, UI-Structure\nGUI\n\nDocumentation Quality\n\nIntroduction and Templates\nCharacteristics and style guide\n\nUsability\nQuality assurance with the client\n\nacceptance test\nusability test\n\nQuality requirements\n\nMotivation\nQuality attributes\nQR-description\nQR-test\n\nUse-cases (not relevant to the exam)\n\nDescription of Uses Cases\nUse for system testing\n\nRE procedure\n\nIntroduction\nGathering requirements\nSpecificying requirements"
+  },
+  {
+    "objectID": "04/04.html",
+    "href": "04/04.html",
+    "title": "4  Design",
+    "section": "",
+    "text": "Desing can be understood as communication with and wthing the developers. Deals with the following topics:\n\nIntroduction to Modelling\nClass diagrams\nInteraction diagrams (sequence diagrams)\nState Diagrams\n\nUML State diagrams\nDialog models\n\nClass design with OOAD\n\nOOAD introduction\nOOAD: Analysis Class diagram\nOOAD: Design Class Diagram\n\nDesign Patterns\n\nIntroduction\nCreational patterns\nStructural patterns\nBehavioral patterns\n\nRationales (Communication of decisions)\nSummary of modelling techniques"
   }
 ]
