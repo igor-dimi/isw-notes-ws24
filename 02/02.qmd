@@ -1,0 +1,10 @@
+ 
+ ## Communication in a Project
+
+Following topics relate to and determine communication within a project:
+
+ 1. Number of participants and their roles in the project
+ 2. Type of the contractual relationship
+ 3. Team Organisation: The way developers communicate within the project
+ 4. Collaborative Coding 
+

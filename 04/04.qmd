@@ -1,0 +1,21 @@
+## Design
+
+Desing can be understood as communication with and wthing the developers. Deals with the following topics:
+
+1. Introduction to Modelling 
+2. Class diagrams
+3. Interaction diagrams (sequence diagrams)
+4. State Diagrams 
+   1. UML State diagrams
+   2. Dialog models
+5. Class design with OOAD
+   1. OOAD introduction
+   2. OOAD: Analysis Class diagram
+   3. OOAD: Design Class Diagram
+6. Design Patterns
+   1. Introduction
+   2. Creational patterns
+   3. Structural patterns
+   4. Behavioral patterns
+7. Rationales (Communication of decisions)
+8. Summary of modelling techniques

@@ -1,0 +1,38 @@
+## Requirements Engineering
+
+requirements engineering can be understood as corresponding to the communication with the users / clients. Deals with the following topics
+
+1. Introduction to communication with users/clients.
+   1. Clients and Requirements
+   2. Description and specification of requirements
+   3. Defining Requirements Engineering
+   4. Outcome of Requirements Engineering 
+   5. Benefit of specification
+   6. Complexities of RE
+2. Usage modelling / description
+   1. Introductory Example
+   2. Introduction
+   3. Tasks, Roles, Persona
+   4. Domain Data
+   5. Functions, UI-Structure
+   6. GUI
+3. Documentation Quality
+   1. Introduction and Templates
+   2. Characteristics and style guide
+4. Usability
+5. Quality assurance with the client
+   1. acceptance test
+   2. usability test
+6. Quality requirements
+   1. Motivation
+   2. Quality attributes
+   3. QR-description
+   4. QR-test
+7. Use-cases (not relevant to the exam)
+   1. Description of Uses Cases
+   2. Use for system testing
+8. RE procedure
+   1. Introduction
+   2. Gathering requirements
+   3. Specificying requirements
+   
