@@ -7,18 +7,18 @@
     "text": "Preface\nLecture notes for the course “Software Engineering” at Heidelberg University WS24/25."
   },
   {
-    "objectID": "index.html#chapters",
-    "href": "index.html#chapters",
-    "title": "Software Engineering Lecture Notes WS 24/25",
-    "section": "Chapters",
-    "text": "Chapters\n\nIntroduction\nCommunication in a Project\nRequirements Engineering (Communication with the Users)\nDesign (Communication with Developers)\nQuality Management\nEvolution\nSWE-Process (Summary and Project Management)"
+    "objectID": "intro.html#chapters",
+    "href": "intro.html#chapters",
+    "title": "1  Introduction",
+    "section": "1.1 Chapters",
+    "text": "1.1 Chapters\n\nIntroduction\nCommunication in a Project\nRequirements Engineering (Communication with the Users)\nDesign (Communication with Developers)\nQuality Management\nEvolution\nSWE-Process (Summary and Project Management)"
   },
   {
     "objectID": "02/02.html",
     "href": "02/02.html",
-    "title": "Software Engineering Lecture Notes WS 24/25 ",
+    "title": "2  Communication in a Project",
     "section": "",
-    "text": "## Communication in a Project\nFollowing topics relate to and determine communication within a project:\n\nNumber of participants and their roles in the project\nType of the contractual relationship\nTeam Organisation: The way developers communicate within the project\nCollaborative Coding"
+    "text": "Following topics relate to and determine communication within a project:\n\nNumber of participants and their roles in the project\nType of the contractual relationship\nTeam Organisation: The way developers communicate within the project\nCollaborative Coding"
   },
   {
     "objectID": "03/03.html",
@@ -32,6 +32,6 @@
     "href": "04/04.html",
     "title": "4  Design",
     "section": "",
-    "text": "Desing can be understood as communication with and wthing the developers. Deals with the following topics:\n\nIntroduction to Modelling\nClass diagrams\nInteraction diagrams (sequence diagrams)\nState Diagrams\n\nUML State diagrams\nDialog models\n\nClass design with OOAD\n\nOOAD introduction\nOOAD: Analysis Class diagram\nOOAD: Design Class Diagram\n\nDesign Patterns\n\nIntroduction\nCreational patterns\nStructural patterns\nBehavioral patterns\n\nRationales (Communication of decisions)\nSummary of modelling techniques"
+    "text": "Desing can be understood as communication with and wthin the developers. Deals with the following topics:\n\nIntroduction to Modelling\nClass diagrams\nInteraction diagrams (sequence diagrams)\nState Diagrams\n\nUML State diagrams\nDialog models\n\nClass design with OOAD\n\nOOAD introduction\nOOAD: Analysis Class diagram\nOOAD: Design Class Diagram\n\nDesign Patterns\n\nIntroduction\nCreational patterns\nStructural patterns\nBehavioral patterns\n\nRationales (Communication of decisions)\nSummary of modelling techniques"
   }
 ]
