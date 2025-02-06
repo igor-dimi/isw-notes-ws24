@@ -1,6 +1,6 @@
 ## Design
 
-Desing can be understood as communication with and wthing the developers. Deals with the following topics:
+Desing can be understood as communication with and wthin the developers. Deals with the following topics:
 
 1. Introduction to Modelling 
 2. Class diagrams

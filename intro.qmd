@@ -1,2 +1,12 @@
 # Introduction
 
+
+## Chapters 
+
+1. Introduction
+2. Communication in a Project
+3. Requirements Engineering (Communication with the Users)
+4. Design (Communication with Developers)
+5. Quality Management
+6. Evolution
+7. SWE-Process (Summary and Project Management)

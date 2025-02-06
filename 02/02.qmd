@@ -1,5 +1,4 @@
- 
- ## Communication in a Project
+## Communication in a Project
 
 Following topics relate to and determine communication within a project:
 
