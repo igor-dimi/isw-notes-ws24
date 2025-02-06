@@ -33,5 +33,26 @@
     "title": "4  Design",
     "section": "",
     "text": "Desing can be understood as communication with and wthin the developers. Deals with the following topics:\n\nIntroduction to Modelling\nClass diagrams\nInteraction diagrams (sequence diagrams)\nState Diagrams\n\nUML State diagrams\nDialog models\n\nClass design with OOAD\n\nOOAD introduction\nOOAD: Analysis Class diagram\nOOAD: Design Class Diagram\n\nDesign Patterns\n\nIntroduction\nCreational patterns\nStructural patterns\nBehavioral patterns\n\nRationales (Communication of decisions)\nSummary of modelling techniques"
+  },
+  {
+    "objectID": "05/05.html",
+    "href": "05/05.html",
+    "title": "5  Quality Assurance",
+    "section": "",
+    "text": "Quality: Software satisfies the requirements\ntopics:\n\nIntroduction\nOrganizational quality assurance\nTesting:\n\nIntro\nTest-case specification\nBlack-box component testing\nWhite-box component testing\nSystem testing\nIntegration testing / overall-component testing\n\nStatic testing\n\nStatic Analysis\nMetrics\nInspection\n\nAnalytical Quality assurance at large"
+  },
+  {
+    "objectID": "06/06.html",
+    "href": "06/06.html",
+    "title": "6  Evolution",
+    "section": "",
+    "text": "All activities that facilitate re-use and further development. (All activities that take place after the initial development phase)\ntopics:\n\nIntro\nArchitecture\nRe-use\nFurther development and change management\nDevOps & IT-Governence\nRe-engineering"
+  },
+  {
+    "objectID": "07/07.html",
+    "href": "07/07.html",
+    "title": "7  SWE Process & Project Management",
+    "section": "",
+    "text": "Making sure that the Software system is developed withing the time money constraints.\ntopics:\n\nProject management\nSWE-process models & methods"
   }
 ]
