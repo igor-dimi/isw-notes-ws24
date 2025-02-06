@@ -1,0 +1,10 @@
+## SWE Process & Project Management
+
+Making sure that the Software system is developed withing the time
+money constraints. 
+
+topics:
+
+1. Project management
+2. SWE-process models & methods
+

@@ -1,0 +1,13 @@
+## Evolution
+
+All activities that facilitate re-use and further development.
+(All activities that take place after the initial development phase)
+
+topics:
+
+1. Intro
+2. Architecture
+3. Re-use
+4. Further development and change management
+5. DevOps & IT-Governence
+6. Re-engineering
