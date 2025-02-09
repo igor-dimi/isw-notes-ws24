@@ -4,6 +4,66 @@ Following topics relate to and determine communication within a project:
 
  1. Number of participants and their roles in the project
  2. Type of the contractual relationship
- 3. Team Organisation: The way developers communicate within the project
+ 3. Team Organization: The way developers communicate within the project
  4. Collaborative Coding 
+
+### Projects and Participants
+
+terms relating to project and process:
+
+* process: 
+* project
+* process model:
+
+characteristics of a project:
+
+* limited time
+* creator
+* purpose
+* client
+* results
+* means and tools 
+* organization and planning
+
+participants:
+
+* client
+* user
+* manufacturer
+
+### Contractual Relationship
+
+project types:
+
+* EP (Entwicklungsprojekt) -> development project
+* AP (Auftragsprojekt) -> Commissioned Project
+* EDP (EDV-Projekt, EDV = Elektronische Datenverarbeitung) -> IT Project
+* SP (Systemprojekt) -> System Project
+
+### Team Organization
+
+
+
+types of team organization:
+
+* single person 
+* 2-person team
+* anarchic team
+* democratic team
+* hierarchical team
+* chief-programmer team
+* agile team
+
+types of secondary organization:
+
+* functional
+* project-based
+* matrix
+
+### Collaborative Coding
+
+* Pair programming 
+* Distributed development
+
+
 

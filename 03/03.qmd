@@ -36,3 +36,157 @@ requirements engineering can be understood as corresponding to the communication
    2. Gathering requirements
    3. Specificying requirements
    
+
+
+### Communication with Users / Clients
+
+* requirements engineering: 
+  * collection of the requirements from the client
+  * specification / formalization of the requirements
+  * testing / examination of the requirements
+  * management of the requirements
+
+* requirements engineering result:
+  * document:
+    * description using system functions
+  * prototype 
+
+* Advantages and Uses of Specification:
+
+* Disadvantages of a missing specification
+* Difficulties related to RE:
+
+
+### Usage Modelling 
+
+* Task-oriented Requirements Engineering:
+  * Task level: tasks, roles, persona
+  * Domain level: subtasks (as-is & to-be), domain data
+  * interaction level: system functions, ui-structure
+  * system level: gui, screen-structure (virtual window)
+
+Roles, Persona, Tasks
+
+#### Roles, Persona
+
+UDC (User-centered design)
+
+Roles and Persona
+
+* User role: 
+* User profile: 
+
+How are personae described:
+
+* name
+* biographic facts: age, gender, etc 
+* knowledge and attitude with respect to the tasks and technology: 
+* needs: main use-cases in which the user wants to apply the software -> Tasks
+* frustrations: 
+* ideal features:
+
+#### Tasks
+
+How tasks are described:
+
+* Goals
+* Decisions
+* Causes
+* Priority
+* Execution profile (frequency, continuity, complexity)
+* Precondition
+* Info-in (input)
+* Info-out (output)
+* resources (means, participating roles)
+
+sub-tasks:
+
+Persona-task correspondence:
+
+* needs <=> sub-tasks => combination of system-functions
+* frustrations <=> problems in sub-tasks
+* ideal features <=> ideas, system functions 
+
+
+#### Domain Data
+
+Domain data explain the terms used in the task descriptions.
+
+
+Goal: describe/model the entities of real world, including their relationships / associations to each other, in order to understand the tasks.
+
+* domain data describe **entities** that are relevant within the context of the sofwtare. They correspond to the terms used in the task description => independent from the software.
+* described with simple **class diagrams** => **domain data diagram** (no operations, no aggregation, no inheritence, only associations)
+* sometimes **glossary** is sufficient.
+  
+sometimes not sufficient, because there additional data necessary on the UI level => **interaction data**. (not relevant in our MMAP case)
+
+#### Functions & UI-Structure (Interaction Level)
+
+Goal: implementation of the User/Machine boundary with respect to the task descriptions.
+
+consists of 2 parts:
+
+1. System functions: which functions are provided by the system?
+2. UI-Structure: 
+   * in which context can the user call which functions, 
+   * which data is available/visible in those contexts? 
+   * how are functionalities divided among the sub-parts? 
+
+:::{.callout-warning}
+UI-Structure is **not** GUI-structure, i.e. the concrete layout is not yet determined.
+:::
+
+##### System Functions
+
+how is a system function described:
+
+* name: nomenclature verb-object, describe what will be achieved on the user data (e.g. unlinkMovie => movie will be unlinked) 
+* input: 
+  * context (i.e. workspace) in which the SF accessible
+* concrete input: data that is gathered during the interaction with the user. Such data is not yet determined when the SF is first called on the GUI, but first provided by the user during the interaction. 
+* output: changes of the UI
+* description: 
+* exceptions: cancel/discard by the user
+* rules: 
+* quality requirements:
+* precondition:
+* postcondition: 
+
+##### UI-Structure
+
+Consists of
+
+* workspaces: 
+  * bundle related system functions and data similar to a class (but only from an abstract user point of view. Actual structure in code can be completely different)
+  * only system functions that can be triggered by the user are listed
+* navigation links between workspaces
+
+UI-structure abstracts from a concrete screen-layout. Logical represents a logical view of the interaction structure.
+
+:::{.callout-important}
+UI-structure is created concurrently with the System functions, because their close interrelation. (Workspaces contain System functions and data)
+:::
+
+#### Design of System Functions and UI-Structure
+
+* how is the system function specification template filled in? 
+* how are ui-structure decision made concurrently to SF specifications? 
+* initial test considerations?
+
+There's still lots of wiggle room for specific design decisions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
