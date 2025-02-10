@@ -170,15 +170,90 @@ UI-structure is created concurrently with the System functions, because their cl
 
 #### Design of System Functions and UI-Structure
 
+
+
 * how is the system function specification template filled in? 
 * how are ui-structure decision made concurrently to SF specifications? 
 * initial test considerations?
 
 There's still lots of wiggle room for specific design decisions.
 
+TODO: 
 
 
+#### GUI
 
+GUI= concrete layout of the UI:
+
+* data representation
+* function representation
+* window structure 
+* dialogue description (how user controls the execution of functions)
+
+Design principles:
+
+* law of proximity
+* law of closure
+* law of good continuation
+* law of similarity
+
+Types of functions:
+
+* semantic functions: actual data manipulation in the system, e.g. save, open, calculate something etc
+* help functions / auxillary functions: data manipulation on the screen, e.g. text size
+* search
+* navigation
+
+How functions are represented:
+
+* buttons
+* checkbox
+* menu-selection
+* shortcut
+* icon
+* scroll-bar
+* drag-and-drop
+
+Views (Window / Screen): concrete version of Workspaces:
+
+* how is data represented
+* how are functions made available / represented
+
+Documentation of a view: Virtual Window (Mock-up)
+
+
+### Documentation Quality
+
+following topics relate to it:
+
+* document templates
+* features and sytle-guide
+
+many docuemnts exist:
+
+* Software context-design:
+  * problem-description
+  * contract
+  * acceptance test plan
+* Requirements Engineering:
+  * Client-requirements
+  * Usage test plan
+  * Software specification
+  * System test plan
+* architectural specification:
+  * architectural specification / definition
+  * sub-system specification
+* Detailed design:
+  * component specification
+  * integration test plan
+* Implementation:
+  * Code
+  * Component test plan
+
+Communication happens via / is facilitated by documents
+
+
+### Usability
 
 
 
