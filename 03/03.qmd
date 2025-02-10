@@ -221,7 +221,6 @@ Views (Window / Screen): concrete version of Workspaces:
 
 Documentation of a view: Virtual Window (Mock-up)
 
-
 ### Documentation Quality
 
 following topics relate to it:
@@ -229,7 +228,7 @@ following topics relate to it:
 * document templates
 * features and sytle-guide
 
-many docuemnts exist:
+many documents exist:
 
 * Software context-design:
   * problem-description
@@ -254,6 +253,229 @@ Communication happens via / is facilitated by documents
 
 
 ### Usability
+
+The degree to which a product can be used efficiently and adequately for specific tasks / goals, in a specific usage context:
+
+* effectivity
+* efficiency
+* satisfaction
+
+7 interaction (dialogue) principles :
+
+* Task appropriateness: no unnecessary repetitive actions must be taken bythe user
+* Self-descriptiveness: user knows what the actions achieve, what's the input, output and the systems response.
+* Controllability: user can decide the order of the operations, can terminate the operation and resume at any given moment without loss. 
+* Expectation-conformity: system is consistent, confirms to users real-life experience and other software conventions
+* Error tolerance: even at the hands of an incorrect input the intended result can be achieved with minimum correction effort.
+* User engagement: system must be appealing and inviting and provide users a positive experience. 
+* Learnability: users are supported and guided during the learning of the software
+  
+
+### Quality Assurance with the Clients
+
+* verification: whether the software being built confirms to the specifications derived from the requirements and whether the requierements documents meet quality standards
+* validation: whether the specifications actually correspond to clients requirements $\Rightarrow$:
+  * usability test
+  * acceptance test 
+
+#### Acceptance Test
+
+* Tests whether the client accepts the system $\Rightarrow$ validation.
+* Uses **system tests** provided by the client
+* includes particularly also **usability tests**.
+* tests are carried out in the production environment (live system where the software is fully deployed and used by the clients) 
+
+
+#### Usability Test
+
+A representative group of users from the target demographic of the product take part in the test to determine to what extent the usability criteria is met.
+
+Consists of:
+
+* users 
+* observers
+
+how:
+
+* develop a test plan:
+  * goal
+  * description of the problem
+  * description of the users
+  * test design
+  * list of tasks
+  * test environment
+  * evaluation criteria
+* prepare the test:
+  * recruiting a representative group
+  * recruiting observers
+  * distribution and review of the test plan with the participants
+  * prepare scenarios
+  * prepare surveys: backgroung, pretest, posttest
+  * prepare test env
+* execute the test: 
+* analyse the results
+
+### Quality requirements 
+
+#### Motivation 
+
+* functional requirements $\Rightarrow$ what? 
+  * tasks
+  * system functions 
+  * gui
+* non-functional requirements (NFR) $\Rightarrow$ how good? 
+  * Quality of the system 
+* QR = quality requirements: describe product considerations
+* QA = quality attributes
+
+#### Quality Attributes
+
+QA describe various types of software quality. 
+
+Categories:
+
+* Quality in Use: Direct validation with the users
+  * Beneficialness: how well are users supported
+    * usability
+    * accessibility
+    * suitability
+  * freedom from risk: general impact
+  * acceptability (how good is the system from the point of view of the user)
+    * support experience
+    * trustworthiness
+    * compliance (regulations, laws)
+* Software Product Quality: verification (internally), validation (externally), 
+  continuously during the whole development process 
+  * functional stability
+    * functional completeness
+    * functional correctness
+    * functional appropriateness (helpful)
+  * performance efficiency
+    * time behavior 
+    * resource utilization
+    * capacity
+  * compatibility
+    * co-existence with other software
+    * interoperability
+  * interaction capability (usability)
+    * recognizability
+    * learnability
+    * operability
+    * user error protection
+    * user engagement
+    * inclusivity
+    * user assistance
+  * reliability
+    * faultlessness
+    * availability
+    * fault tolerance
+    * recoverability
+  * security
+    * confidentiality
+    * integrity
+    * non-repudiation
+    * accountability
+    * authenticity
+  * maintainability
+    * modularity
+    * reusability
+    * analysability
+    * modifiability
+    * testability
+  * flexibility
+    * adaptability
+    * scalability
+    * installability
+    * replaceability
+  * safety 
+    * operational constraint
+    * risk identification
+    * fail safe
+    * hazard warning
+    * safe integration
+
+#### Describing QR
+
+* QR should be made as measurable and as concrete as possible. 
+* QR are defined in parallel with the FR with as much detail as possible, for all levels:
+  * Tasks
+  * Domain data
+  * Functions
+  * GUI
+
+#### Testing QR
+
+* Different QA categories require different testing methods.
+* Usually only possible at the level of system testing, especially acceptance testing. 
+* Usually conducted by acting out scenarios
+
+### Use Cases
+
+So far we described the requirements via:
+
+* (Sub)-Tasks
+* Domain Data
+* Roles / Persona
+* System functions
+* Interaction data
+* UI Structure
+
+At the system level this is further refined via:
+
+* concrete views
+* interaction models
+
+But this is only an indirect description of users interaction with the system.
+
+**Use Cases** describe the specifics of users interactions with the system, specifically 
+the particular execution sequence of system function to complete a certain (sub-)task. Thus, they are derived from **Tasks**
+
+use cases vs TORE:
+
+* use cases cover only a subset of TORE. Particularly
+  * No domain data model
+  * No UI-Structure (which SF & Data are available in which view, how do you navigate between views)
+* UC integrate SF within the execution flow, in TORE SF are contained in the subtask description (although without the execution flow)
+
+#### Description of a UC
+
+Example: manage movie or performer ratings in MMAPP. 
+
+* Name: Manage Rating
+* Actor: Person
+* Goal: to rate movies or performers
+* Precondition: at least one movie exists. Depending on the current state wither A1 or A2 is the starting point:
+  * Flow of events: 
+    * Actor: A1) W0.1 Movie Master View ... System: System shows the 
+    * ...
+  * Rules: 
+  * Quality requirements: 
+  * Data, System Functions: 
+  * Postcondition: 
+
+
+#### Use of System Tests 
+
+Scenario vs UC:
+
+* Scenario: a specific interaction flow
+* UC: an abstract description of a set of scenarios
+
+A choice of a typical set of scenarios can be used as a template when creating a UC. 
+On the other hand a UC can be validated by a subsequent creation of a set of test scenarios. 
+
+What is a typical flow? 
+
+* normal flow
+* coverage of branches / exceptions
+* dealing with large input (stress test)
+* dealing with complex execution flows (many functions are called)
+
+
+
+
+
+
 
 
 
