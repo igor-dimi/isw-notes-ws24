@@ -472,18 +472,96 @@ What is a typical flow?
 * dealing with complex execution flows (many functions are called)
 
 
+### RE Procedure - Method of RE
 
+So far we only concerned ourselves with describing the requirements. 
+Here we explain how to gather and manage them.
 
+#### Introduction
 
+Stakeholder (client) requirements: the requirements stipulated by the client to achieve a certain goal
+or solve a certain problem.
 
+1. requirements are gathered
+2. requirements are formulated / formalized in the specification
+3. specifications are validated and verified
+4. specifications are translated into a design
+5. the design is implemented
+6. the implementation is tested 
+7. the implementation is deployed to the clients
 
+#### Gathering Requirements
 
+what information should be gathered:
 
+* previous method to solve the problem
+* problems related to the previous method
+* goals for the new system / method to solve the problem
+* success criteria
+* rough system architecture (how many components, distribution)
+* realistic solutions
+* consequences and risks
 
+how it is gathered:
 
+* observation
+* user surveying
+* ethnographic studies
+* use cases
+* workshops
+* object oriented analysis
+* entity relationship diagrams
+* conceptual modelling
+* data flow diagram
+* formal specification
+* prototypes 
+* observations of other products
+* literature research
+* studying standard software
 
+requirements can also be gathered via user feedback
 
+#### Specifying Requirements
 
+contents and types of requirement specification:
 
+* functional requirements: how should the software support the users? 
+* non-functional requirements: 
+  * quality requirements: how well should the software support the users?
+  * edge conditions
+* rationales: reasoning behind the decisions? 
 
+requirement specification is textual as well as schematic (UML, ER etc)
+
+There are two types of requirements:
+
+* client (user) requirements
+* system (developer) requirements: requirements from the point of view of the developer with more technical detail.
+
+Usually two different documents are created. 
+
+TORE again:
+
+1. task level:
+   * tasks
+   * roles, persona
+2. domain level:
+   * sub-tasks
+   * domain data
+3. interaction level:
+   * system functions
+   * interaction
+   * ui-structure
+4. system-level: GUI
+   * screen-structure (virtual window)
+  
+above levels can be categorized as follows:
+
+* 1, 2: client requirements
+* 3, 4: system requirements
+
+Two different specification documents:
+
+* lastenheft (client specification document)
+* pflichtenheft (developer specification document)
 

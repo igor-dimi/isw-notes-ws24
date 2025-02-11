@@ -1,6 +1,13 @@
 ## Design
 
-Desing can be understood as communication with and wthin the developers. Deals with the following topics:
+Design can be understood as communication with and within the developers. 
+
+**Goal**: The software system can be further developed efficiently, and is easy to understand for new 
+developers. 
+
+Belongs to the development and specifically detailed design category of software development.
+
+Deals with the following topics:
 
 1. Introduction to Modelling 
 2. Class diagrams
@@ -19,3 +26,112 @@ Desing can be understood as communication with and wthin the developers. Deals w
    4. Behavioral patterns
 7. Rationales (Communication of decisions)
 8. Summary of modelling techniques
+
+### Introduction to Modelling
+
+A given team (approx 7 people) developes an understanding of the structure of the Software System,
+albeit without using code, since code is too detailed and is not conducive to understanding the overall 
+structure of the software.
+
+Instead an appropriate abstraction level is necessary $\Rightarrow$ modelling languages.
+
+**Model**: Abstraction of a system, expressed in a formal language / notation where irrelevant details are omitted.
+
+Characteristics of models:
+
+* mapping
+* incompleteness
+* pragmatic (a model is created with a certain purpose / goal)
+
+Characteristics of a formal notation:
+
+* syntax
+* semantics
+* pragmatics
+  * analysis techniques: type checking, consistency checks
+  * simulation techniques
+  * transformation techniques (refactoring, (algebraic) simplification)
+  * generation techniques
+
+A notation is a 'theory' that enables to reason about and manipulate representations of objects
+from the domain. 
+
+#### UML
+
+defines: 
+
+* Structure diagrams $\rightarrow$ statics of the system
+* Behavior diagrams $\rightarrow$ dynamics of the system
+  * interactions 
+  * flows 
+  * state transitions
+
+##### Structure Diagrams
+
+* Design:
+  * Class Diagram (analysis and design)
+  * Object diagram (special cases)
+  * package diagram (bundles of classes)
+* Architecture:
+  * compositional structure diagram
+  * logical component diagram (internal and external view)
+  * distribution diagram (over the physical components)
+
+##### Behavior Diagrams
+
+* Flows:
+  * Use case diagram (overview of the use case)
+  * activity diagram (sequences of activities)
+  * state diagram (sequences of states)
+* interaction:
+  * sequence diagram (sequence of messages)
+  * communication diagram (focus on a component)
+  * time diagram (communication between automata)
+  * interaction overview diagram (interaction of multiple interactions)
+
+In the lecture especially:
+
+* class diagrams
+* object diagrams
+* interaction diagrams
+* state diagrams
+
+
+### Class Diagrams 
+
+important components of class diagrams:
+
+* classes (objects)
+* associations between classes:
+  * aggregation
+  * komposition
+* attributes
+* operations
+* generalization / specialization relationship (inheritance)
+* interfaces: a view on a class (a contract)
+
+
+### Interaction Diagrams (Sequence Diagrams)
+
+### State Diagrams
+
+### Class Design with OOAD
+
+### Design Patterns 
+
+### Rationales (Communication of Decisions)
+
+Documents contain only the last decision.
+Communication of all sorts of decisions and history of discarded decisions via Rationales.
+
+How are rationales described:
+
+* questions: concrete problems that don't have an obvious solution
+* options: describe alternative solutions to a problem
+* criteria: quality requirements
+* arguments: condensate and summarize discussions
+* decisions: 
+  * relates to one or more open questions
+  * summarizes the chosen options and arguments that support it
+* 
+
