@@ -166,6 +166,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#quality-assurance-with-the-clients" id="toc-quality-assurance-with-the-clients" class="nav-link" data-scroll-target="#quality-assurance-with-the-clients"><span class="header-section-number">3.0.5</span> Quality Assurance with the Clients</a></li>
   <li><a href="#quality-requirements" id="toc-quality-requirements" class="nav-link" data-scroll-target="#quality-requirements"><span class="header-section-number">3.0.6</span> Quality requirements</a></li>
   <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases"><span class="header-section-number">3.0.7</span> Use Cases</a></li>
+  <li><a href="#re-procedure---method-of-re" id="toc-re-procedure---method-of-re" class="nav-link" data-scroll-target="#re-procedure---method-of-re"><span class="header-section-number">3.0.8</span> RE Procedure - Method of RE</a></li>
   </ul>
 </nav>
     </div>
@@ -754,6 +755,107 @@ Important
 <li>coverage of branches / exceptions</li>
 <li>dealing with large input (stress test)</li>
 <li>dealing with complex execution flows (many functions are called)</li>
+</ul>
+</section>
+</section>
+<section id="re-procedure---method-of-re" class="level3" data-number="3.0.8">
+<h3 data-number="3.0.8" class="anchored" data-anchor-id="re-procedure---method-of-re"><span class="header-section-number">3.0.8</span> RE Procedure - Method of RE</h3>
+<p>So far we only concerned ourselves with describing the requirements. Here we explain how to gather and manage them.</p>
+<section id="introduction" class="level4" data-number="3.0.8.1">
+<h4 data-number="3.0.8.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.0.8.1</span> Introduction</h4>
+<p>Stakeholder (client) requirements: the requirements stipulated by the client to achieve a certain goal or solve a certain problem.</p>
+<ol type="1">
+<li>requirements are gathered</li>
+<li>requirements are formulated / formalized in the specification</li>
+<li>specifications are validated and verified</li>
+<li>specifications are translated into a design</li>
+<li>the design is implemented</li>
+<li>the implementation is tested</li>
+<li>the implementation is deployed to the clients</li>
+</ol>
+</section>
+<section id="gathering-requirements" class="level4" data-number="3.0.8.2">
+<h4 data-number="3.0.8.2" class="anchored" data-anchor-id="gathering-requirements"><span class="header-section-number">3.0.8.2</span> Gathering Requirements</h4>
+<p>what information should be gathered:</p>
+<ul>
+<li>previous method to solve the problem</li>
+<li>problems related to the previous method</li>
+<li>goals for the new system / method to solve the problem</li>
+<li>success criteria</li>
+<li>rough system architecture (how many components, distribution)</li>
+<li>realistic solutions</li>
+<li>consequences and risks</li>
+</ul>
+<p>how it is gathered:</p>
+<ul>
+<li>observation</li>
+<li>user surveying</li>
+<li>ethnographic studies</li>
+<li>use cases</li>
+<li>workshops</li>
+<li>object oriented analysis</li>
+<li>entity relationship diagrams</li>
+<li>conceptual modelling</li>
+<li>data flow diagram</li>
+<li>formal specification</li>
+<li>prototypes</li>
+<li>observations of other products</li>
+<li>literature research</li>
+<li>studying standard software</li>
+</ul>
+<p>requirements can also be gathered via user feedback</p>
+</section>
+<section id="specifying-requirements" class="level4" data-number="3.0.8.3">
+<h4 data-number="3.0.8.3" class="anchored" data-anchor-id="specifying-requirements"><span class="header-section-number">3.0.8.3</span> Specifying Requirements</h4>
+<p>contents and types of requirement specification:</p>
+<ul>
+<li>functional requirements: how should the software support the users?</li>
+<li>non-functional requirements:
+<ul>
+<li>quality requirements: how well should the software support the users?</li>
+<li>edge conditions</li>
+</ul></li>
+<li>rationales: reasoning behind the decisions?</li>
+</ul>
+<p>requirement specification is textual as well as schematic (UML, ER etc)</p>
+<p>There are two types of requirements:</p>
+<ul>
+<li>client (user) requirements</li>
+<li>system (developer) requirements: requirements from the point of view of the developer with more technical detail.</li>
+</ul>
+<p>Usually two different documents are created.</p>
+<p>TORE again:</p>
+<ol type="1">
+<li>task level:
+<ul>
+<li>tasks</li>
+<li>roles, persona</li>
+</ul></li>
+<li>domain level:
+<ul>
+<li>sub-tasks</li>
+<li>domain data</li>
+</ul></li>
+<li>interaction level:
+<ul>
+<li>system functions</li>
+<li>interaction</li>
+<li>ui-structure</li>
+</ul></li>
+<li>system-level: GUI
+<ul>
+<li>screen-structure (virtual window)</li>
+</ul></li>
+</ol>
+<p>above levels can be categorized as follows:</p>
+<ul>
+<li>1, 2: client requirements</li>
+<li>3, 4: system requirements</li>
+</ul>
+<p>Two different specification documents:</p>
+<ul>
+<li>lastenheft (client specification document)</li>
+<li>pflichtenheft (developer specification document)</li>
 </ul>
 
 

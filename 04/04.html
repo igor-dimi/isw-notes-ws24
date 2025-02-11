@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -153,7 +155,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-modelling" id="toc-introduction-to-modelling" class="nav-link active" data-scroll-target="#introduction-to-modelling"><span class="header-section-number">4.0.1</span> Introduction to Modelling</a></li>
+  <li><a href="#class-diagrams" id="toc-class-diagrams" class="nav-link" data-scroll-target="#class-diagrams"><span class="header-section-number">4.0.2</span> Class Diagrams</a></li>
+  <li><a href="#interaction-diagrams-sequence-diagrams" id="toc-interaction-diagrams-sequence-diagrams" class="nav-link" data-scroll-target="#interaction-diagrams-sequence-diagrams"><span class="header-section-number">4.0.3</span> Interaction Diagrams (Sequence Diagrams)</a></li>
+  <li><a href="#state-diagrams" id="toc-state-diagrams" class="nav-link" data-scroll-target="#state-diagrams"><span class="header-section-number">4.0.4</span> State Diagrams</a></li>
+  <li><a href="#class-design-with-ooad" id="toc-class-design-with-ooad" class="nav-link" data-scroll-target="#class-design-with-ooad"><span class="header-section-number">4.0.5</span> Class Design with OOAD</a></li>
+  <li><a href="#design-patterns" id="toc-design-patterns" class="nav-link" data-scroll-target="#design-patterns"><span class="header-section-number">4.0.6</span> Design Patterns</a></li>
+  <li><a href="#rationales-communication-of-decisions" id="toc-rationales-communication-of-decisions" class="nav-link" data-scroll-target="#rationales-communication-of-decisions"><span class="header-section-number">4.0.7</span> Rationales (Communication of Decisions)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -175,7 +189,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Desing can be understood as communication with and wthin the developers. Deals with the following topics:</p>
+<p>Design can be understood as communication with and within the developers.</p>
+<p><strong>Goal</strong>: The software system can be further developed efficiently, and is easy to understand for new developers.</p>
+<p>Belongs to the development and specifically detailed design category of software development.</p>
+<p>Deals with the following topics:</p>
 <ol type="1">
 <li>Introduction to Modelling</li>
 <li>Class diagrams</li>
@@ -201,8 +218,133 @@ ul.task-list li input[type="checkbox"] {
 <li>Rationales (Communication of decisions)</li>
 <li>Summary of modelling techniques</li>
 </ol>
+<section id="introduction-to-modelling" class="level3" data-number="4.0.1">
+<h3 data-number="4.0.1" class="anchored" data-anchor-id="introduction-to-modelling"><span class="header-section-number">4.0.1</span> Introduction to Modelling</h3>
+<p>A given team (approx 7 people) developes an understanding of the structure of the Software System, albeit without using code, since code is too detailed and is not conducive to understanding the overall structure of the software.</p>
+<p>Instead an appropriate abstraction level is necessary <span class="math inline">\(\Rightarrow\)</span> modelling languages.</p>
+<p><strong>Model</strong>: Abstraction of a system, expressed in a formal language / notation where irrelevant details are omitted.</p>
+<p>Characteristics of models:</p>
+<ul>
+<li>mapping</li>
+<li>incompleteness</li>
+<li>pragmatic (a model is created with a certain purpose / goal)</li>
+</ul>
+<p>Characteristics of a formal notation:</p>
+<ul>
+<li>syntax</li>
+<li>semantics</li>
+<li>pragmatics
+<ul>
+<li>analysis techniques: type checking, consistency checks</li>
+<li>simulation techniques</li>
+<li>transformation techniques (refactoring, (algebraic) simplification)</li>
+<li>generation techniques</li>
+</ul></li>
+</ul>
+<p>A notation is a ‘theory’ that enables to reason about and manipulate representations of objects from the domain.</p>
+<section id="uml" class="level4" data-number="4.0.1.1">
+<h4 data-number="4.0.1.1" class="anchored" data-anchor-id="uml"><span class="header-section-number">4.0.1.1</span> UML</h4>
+<p>defines:</p>
+<ul>
+<li>Structure diagrams <span class="math inline">\(\rightarrow\)</span> statics of the system</li>
+<li>Behavior diagrams <span class="math inline">\(\rightarrow\)</span> dynamics of the system
+<ul>
+<li>interactions</li>
+<li>flows</li>
+<li>state transitions</li>
+</ul></li>
+</ul>
+<section id="structure-diagrams" class="level5" data-number="4.0.1.1.1">
+<h5 data-number="4.0.1.1.1" class="anchored" data-anchor-id="structure-diagrams"><span class="header-section-number">4.0.1.1.1</span> Structure Diagrams</h5>
+<ul>
+<li>Design:
+<ul>
+<li>Class Diagram (analysis and design)</li>
+<li>Object diagram (special cases)</li>
+<li>package diagram (bundles of classes)</li>
+</ul></li>
+<li>Architecture:
+<ul>
+<li>compositional structure diagram</li>
+<li>logical component diagram (internal and external view)</li>
+<li>distribution diagram (over the physical components)</li>
+</ul></li>
+</ul>
+</section>
+<section id="behavior-diagrams" class="level5" data-number="4.0.1.1.2">
+<h5 data-number="4.0.1.1.2" class="anchored" data-anchor-id="behavior-diagrams"><span class="header-section-number">4.0.1.1.2</span> Behavior Diagrams</h5>
+<ul>
+<li>Flows:
+<ul>
+<li>Use case diagram (overview of the use case)</li>
+<li>activity diagram (sequences of activities)</li>
+<li>state diagram (sequences of states)</li>
+</ul></li>
+<li>interaction:
+<ul>
+<li>sequence diagram (sequence of messages)</li>
+<li>communication diagram (focus on a component)</li>
+<li>time diagram (communication between automata)</li>
+<li>interaction overview diagram (interaction of multiple interactions)</li>
+</ul></li>
+</ul>
+<p>In the lecture especially:</p>
+<ul>
+<li>class diagrams</li>
+<li>object diagrams</li>
+<li>interaction diagrams</li>
+<li>state diagrams</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="class-diagrams" class="level3" data-number="4.0.2">
+<h3 data-number="4.0.2" class="anchored" data-anchor-id="class-diagrams"><span class="header-section-number">4.0.2</span> Class Diagrams</h3>
+<p>important components of class diagrams:</p>
+<ul>
+<li>classes (objects)</li>
+<li>associations between classes:
+<ul>
+<li>aggregation</li>
+<li>komposition</li>
+</ul></li>
+<li>attributes</li>
+<li>operations</li>
+<li>generalization / specialization relationship (inheritance)</li>
+<li>interfaces: a view on a class (a contract)</li>
+</ul>
+</section>
+<section id="interaction-diagrams-sequence-diagrams" class="level3" data-number="4.0.3">
+<h3 data-number="4.0.3" class="anchored" data-anchor-id="interaction-diagrams-sequence-diagrams"><span class="header-section-number">4.0.3</span> Interaction Diagrams (Sequence Diagrams)</h3>
+</section>
+<section id="state-diagrams" class="level3" data-number="4.0.4">
+<h3 data-number="4.0.4" class="anchored" data-anchor-id="state-diagrams"><span class="header-section-number">4.0.4</span> State Diagrams</h3>
+</section>
+<section id="class-design-with-ooad" class="level3" data-number="4.0.5">
+<h3 data-number="4.0.5" class="anchored" data-anchor-id="class-design-with-ooad"><span class="header-section-number">4.0.5</span> Class Design with OOAD</h3>
+</section>
+<section id="design-patterns" class="level3" data-number="4.0.6">
+<h3 data-number="4.0.6" class="anchored" data-anchor-id="design-patterns"><span class="header-section-number">4.0.6</span> Design Patterns</h3>
+</section>
+<section id="rationales-communication-of-decisions" class="level3" data-number="4.0.7">
+<h3 data-number="4.0.7" class="anchored" data-anchor-id="rationales-communication-of-decisions"><span class="header-section-number">4.0.7</span> Rationales (Communication of Decisions)</h3>
+<p>Documents contain only the last decision. Communication of all sorts of decisions and history of discarded decisions via Rationales.</p>
+<p>How are rationales described:</p>
+<ul>
+<li>questions: concrete problems that don’t have an obvious solution</li>
+<li>options: describe alternative solutions to a problem</li>
+<li>criteria: quality requirements</li>
+<li>arguments: condensate and summarize discussions</li>
+<li>decisions:
+<ul>
+<li>relates to one or more open questions</li>
+<li>summarizes the chosen options and arguments that support it</li>
+</ul></li>
+<li></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
