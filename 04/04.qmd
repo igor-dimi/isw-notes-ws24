@@ -113,9 +113,198 @@ important components of class diagrams:
 
 ### Interaction Diagrams (Sequence Diagrams)
 
+interaction diagrams describe communication between various actors.
+
+Various uml interaction diagrams:
+
+* **sequence diagrams**
+* communication diagrams
+* time diagram
+* interaction overview diagram
+
+![seq diag](./imgs/seq-diag-synch.png){width=50%}
+
 ### State Diagrams
 
 ### Class Design with OOAD
+
+Steps of the software process:
+
+1. analysis and specification: gathering and representing requirements
+2. **design**: structure and architecture of the software is defined
+3. coding: implementation of the end product in detail. 
+
+Design has the following goals:
+
+1. partitioning the system into manageable units
+2. laying out a structure: relationship between the units / parts that make up the whole system
+3. hierarchical partitioning: abstraction that helps understand and maintain a large software system
+
+results from requirements:
+
+* Domain / Interaction data diagram: specification of the data in detail
+* SFs or UCs: specification of functionality / how functionality is carried out
+* Workspaces (UI-Structure): How and where is the data & SF represented and provided for the user, 
+  as well as the navigation between the workspaces.
+* View (Virtual Window): the mockup of the GUI
+
+Consideration when making design decisions:
+
+* Data management classes: implementation of domain / interaction data diagram
+  * which data which classes? 
+  * can some entities be directly taken as classes?
+  * what operations are necessary?
+  * how is data storage implemented?
+* Classes for internal processing: Implementation of SFs
+  * how are SFs implemented / distributed among operations of which classes? 
+    (note that SFs do not generally correspond to individual operations, but are combinations of multiple ops)
+* UI classes: Implement the views (virtual windows) and the navigation from the UI-structure.
+  
+#### Design Principles: Cohesion and Coupling
+
+##### Cohesion
+
+A measure of or degree to how much the elements of a component belong together.
+
+**Goal**: high cohesion, i.e. elements within a module or component belong together strongly,
+are highly interdependent $\Rightarrow$ good for maintenance. 
+
+We can't easily partition a highly cohesive module into subparts, where the subparts are independent of each other.
+
+How to achieve high cohesion:
+
+* principles of object orientation (data encapsulation)
+* using appropriate design patterns for coupling and decoupling
+
+##### Coupling 
+
+A measure of the degree of how strongly different components depend on one another. 
+
+**Goal**: low coupling, i.e. low interdependence between different components
+
+Low coupling is good for performance (communication is simpler)
+
+how to reduce coupling:
+
+* interface coupling: information exchange takes place only via interfaces. 
+* components should call other components as little as possible
+* data coupling should be avoided: no shared data among different components
+* structure coupling should avoided: no shared structure among different components
+
+Simple and complex operations:
+
+* Simple operation: only direct access of attributes (class access it's own attributues)
+* Complex operation: direct as well as indirect access of attributes (indirect access: class A access attributes of class B)
+  * increase coupling
+  * hinder cohesion
+
+Complex operations should therefore be split up in smaller operations, or encapsulated in own class whose data they access. 
+
+#### OOAD 
+
+Object-oriented analysis & design $\Rightarrow$ systematic development of the design model
+
+the process of: requirements $\Rightarrow$ class diagram:
+
+* what decision should be made and how?
+* what classes are needed, with what operations and attributes should the classes be equipped? 
+
+OOAD 2 step method:
+
+1. Analysis class model: defines class structure based on the requirements
+2. Design class model: concrete implementation of the analysis class model using
+   frameworks, libraries and concrete classes, taking design goals, especially NFRs. 
+
+##### Analysis Class Model / Diagram
+
+4 Steps:
+
+1. Determine classes, attributes, and association from the requirements, with appropriate names.
+2. Determine the operations of the classes: distribute basic operations and SFs as methods (operations) in classes,
+   taking high cohesion and low coupling into account.
+3. Determine complex associations and inheritance relationships
+4. Consolidate the class diagram: possibly dissolve interaction / ui classes, consolidate associations.
+
+3 types of classes:
+
+1. entity class: describes objects with permanent existence
+   * e.g.: film, actor. 
+2. control class: describes processes. SFs are initially modelled as such. Serve as placeholder for complex operations, 
+   ultimately are dissolved and distributed as methods among various appropriate classes
+3. boundary / interaction / dialogue class: bundles data and operations that are provided on the UI.
+
+###### Step 1
+
+Goal: Determine / derive classes from the requirements
+
+Rules:
+
+1. Entity classes: 
+   * Entities from the data diagram become entity classes, e.g. film and actor.
+   * associations from the data diagram become the associates between the classes
+2. Control classes:
+   * SF are initially modelled as such
+   * control classes are linked to the entity classes, whose attributes they access
+   * control classes are linked to other control classes, which they cooperate with. 
+3. Boundary classes:
+   * Workspaces $\Rightarrow$ boundary classes
+   * are linked to the entity classes, that are displayed in the workspace
+   * are linked to the control classes of the SFs that are provided on the UI interface. 
+   * navigation between workspaces $\Rightarrow$ links / associations between boundary classes.   
+
+###### Step 2
+
+Goal: Determine the operations of the classes, dissolve control classes by distributing them among the various
+classes as methods. (occasionally a control class can be retained as a concrete class)
+
+Rules:
+
+1. Dissolve control classes by distributing them among entity and dialogue classes: 
+  1. canonical solution: if control class operates only on the attributes of a single class, it becomes a method in that class.
+  2. simple solution: if multiple classes are involved, but the input and output are associated to one class respectively, then the
+    the control class can be ... ? 
+  3. complex solution: if multiple classes are involved, and the output and input relate to multiple classes, then ... ?
+    $\Rightarrow$ sometimes objectification of the control class
+2. Operations can be split up or united, depending on the situation.
+   * an operation can cover multiple SFs (only for the canonical solution) 
+   * SFs can be implemented by multiple operations
+
+
+###### Step 3
+
+Goal: Use inheritance and model complex associations
+
+###### Step 4
+
+Consolidate the model and possibly dissolve the interaction classes
+
+Rules:
+
+1. place interaction (ui) classes in a separate layer (e.g GUI layer)
+2. alternatively assign dialogue classes to some other classes: in this case the class
+   is responsible both for data and representation on the GUI
+3. revising the associations: cover all possible communication links
+   * each class that has a complex operation must be associated to the classes that they call
+   * consolidate the associations
+   * provide multiplicities (cardinalities)
+4. no redundant links: associations that are not used in any SF should be removed.
+
+##### Design Class Diagram / Model
+
+Goal: preparation for coding by taking design goals into account.
+
+Analysis class diagram gets refined with infrastructure classes (e.g. library) and completed,
+often using design patterns.
+
+Steps:
+
+1. complete the list of attributes and operations
+2. determine the data types and access specifiers (private, protected, public, etc)
+3. specify operations (pre- and postconditions)
+4. define exceptions
+5. specify concrete data structures that realize associations
+6. eliminate multiple inheritance
+
 
 ### Design Patterns 
 
@@ -133,5 +322,6 @@ How are rationales described:
 * decisions: 
   * relates to one or more open questions
   * summarizes the chosen options and arguments that support it
-* 
+
+
 

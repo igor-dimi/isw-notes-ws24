@@ -1,6 +1,8 @@
 project:
   type: book
 
+number-depth: 2
+
 book:
   title: "Software Engineering Lecture Notes WS 24/25 "
   author: "Igor Dimitrov"
@@ -14,14 +16,18 @@ book:
     - 05/05.qmd
     - 06/06.qmd
     - 07/07.qmd
+  # downloads: pdf
+  
 
 bibliography: references.bib
+
 
 format:
   html:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+    number-depth: 2
 
 
 
