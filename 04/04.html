@@ -468,10 +468,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Goal: Determine the operations of the classes, dissolve control classes by distributing them among the various classes as methods. (occasionally a control class can be retained as a concrete class)</p>
 <p>Rules:</p>
 <ol type="1">
-<li>Dissolve control classes by distributing them among entity and dialogue classes:</li>
+<li>Dissolve control classes by distributing them among entity and dialogue classes:
+<ol type="1">
 <li>canonical solution: if control class operates only on the attributes of a single class, it becomes a method in that class.</li>
 <li>simple solution: if multiple classes are involved, but the input and output are associated to one class respectively, then the the control class can be … ?</li>
 <li>complex solution: if multiple classes are involved, and the output and input relate to multiple classes, then … ? <span class="math inline">\(\Rightarrow\)</span> sometimes objectification of the control class</li>
+</ol></li>
 <li>Operations can be split up or united, depending on the situation.
 <ul>
 <li>an operation can cover multiple SFs (only for the canonical solution)</li>
