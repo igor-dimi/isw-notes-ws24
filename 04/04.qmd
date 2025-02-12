@@ -260,10 +260,10 @@ classes as methods. (occasionally a control class can be retained as a concrete 
 Rules:
 
 1. Dissolve control classes by distributing them among entity and dialogue classes: 
-  1. canonical solution: if control class operates only on the attributes of a single class, it becomes a method in that class.
-  2. simple solution: if multiple classes are involved, but the input and output are associated to one class respectively, then the
-    the control class can be ... ? 
-  3. complex solution: if multiple classes are involved, and the output and input relate to multiple classes, then ... ?
+    1. canonical solution: if control class operates only on the attributes of a single class, it becomes a method in that class.
+    2. simple solution: if multiple classes are involved, but the input and output are associated to one class respectively, then the
+      the control class can be ... ? 
+    3. complex solution: if multiple classes are involved, and the output and input relate to multiple classes, then ... ?
     $\Rightarrow$ sometimes objectification of the control class
 2. Operations can be split up or united, depending on the situation.
    * an operation can cover multiple SFs (only for the canonical solution) 
