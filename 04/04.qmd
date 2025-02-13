@@ -304,9 +304,196 @@ Steps:
 4. define exceptions
 5. specify concrete data structures that realize associations
 6. eliminate multiple inheritance
+7. Consolidation via sequence diagrams
 
+###### Step 3 - Specifying Operations
+
+Specification of an operation
+: specifying the behavior of an operation by providing a contract, without providing the algorithm
+
+Design by Contract
+: specifying an operation by providing pre-, post-condition and an invariant
+
+* Usually only textual
+* Sometimes directly supported by programming languages, e.g 
+  * Javadoc comments in Java 
+  * Assert in Java
+
+###### Step 4 - Specifying Exceptions
+
+Error situations in code are usually represented as special output values, however this does not guarantee that the caller will deal with the error.
+
+Instead some programming languages have explicit error handling mechanisms called exceptions
+
+in java:
+
+```java
+try {
+  // code that throws and exception of type E
+} catch (E e) {
+  // what to do with the caught exception
+}
+```
+
+Exception types:
+
+* Exceptions in the domain: input doesn't satisfy precondition, business logic is violated
+* Technical failure: Connection to server failed, called object doesn't exist
+
+Ways to deal with exceptions:
+
+* directly: using a specific operation
+* handing over to the outside: via try-catch block
+* not treating: letting the run-time system eventually catch the exceptions
+
+###### Step 5 - Determining Concrete Data Structures
+
+* Concretizing associations with a qualifier data structure:
+
+![concretizing with qualifier](./imgs/concretizing-ds-qualifier.png){width="70%"}
+
+* concretizing associations by providing a fixed order: if there is a fixed order the objects associated to some
+  other objects exist, this order can be fixed via a list or iterators.
+
+
+###### Step 6 - Eliminating Multiple Inheritance
+
+It is common to have multiple inheritance relationships in analysis models.
+This should be eliminated in design models using **interfaces**. 
+
+###### Step 7 - Consolidation via Sequence Diagrams 
+
+Implementations of complex operations (SFs) should be checked using sequence diagrams for:
+
+* high coupling: are too many objects and too many method calls used for the implementation?
+  Yes $\Rightarrow$ reduce it by repartitoning the SF into operations
+* low cohesion: is there an operation of a class that works with disjoint sets of attributes?
+  Yes $\Rightarrow$ can the class be partitioned into multiple classes and will it help with the complexity?
 
 ### Design Patterns 
+
+Transferring experience of good class structure design. Design patterns describes the roles of classes,
+their dependencies and associations.
+
+Types of design patterns:
+
+* creational patterns (Erzeugungsmuster)
+* structural patterns
+* behavioral patterns (Verhaltensmuster)
+
+How a pattern is described:
+
+* name:
+* problem: motivation, field of application, problem class
+* solution:
+  * structure (class diagram)
+  * elements (classes, their associations, and their operations)
+  * interactions of objects (sequence diagram)
+* discussion: 
+  * advantages and disadvantages: when and why should be applied
+  * dependencies, limitations
+  * special cases
+  * known applications (how common is it, how mature is it)
+
+advantages:
+
+* proven solutions to recurring problems
+* better readability & maintainability of software design and source code
+* easier communication via a common vocabulary / language of patterns
+  * among architects and developers 
+  * among developers 
+
+disadvantages:
+
+* using a pattern in a false context: overhead due to unnecessary classes, bad readability, maintainability etc
+
+#### Creational Patterns
+
+Deal with creation of objects:
+
+* try to hide, unify or simplify it
+* describe what is created, how and when
+
+Examples:
+
+* singleton
+* abstract superclass
+* factory method
+* prototype
+* builder
+
+##### Singleton
+
+* **problem**: there can exist only a single instance object of a given type. 
+* **solution**: 
+  ```java
+  public final class S {
+    private static S instance;
+    private S(); // private constructor
+    public static S getInstance () {
+      if (instance == null) instance = new S();
+      return instance;
+    }
+  }
+
+  // usage of singleton 
+  // S s = new S() can't be called because constructor is private, instead
+  S s = S.getInstance(); // s refers to the single central initialized static instance of S
+  ```
+
+##### Abstract Superclass 
+
+* **problem**: different classes contain identical groups of attributes and methods 
+* **solution**: refactor the classes, such that the common groups of attributes and methods are separated in an abstract super class,
+  from which the old classes inherit. 
+
+#### Structural Patterns 
+
+Deal with combinations and relationships of classes $\Rightarrow$ allow building larger structures
+
+examples:
+
+1. **Composite**
+2. adapter
+3. proxy
+4. bridge
+5. director
+6. facade
+7. flyweight
+
+##### Composite Pattern
+
+* **problem**: modelling and implementing hierarchical (tree) structures
+* **solution**: a uniform abstract super class from which a leaf and a node class inherits
+
+![composite design pattern](./imgs/composite-design-pattern.png){width="85%"}
+
+#### Behavioral Patterns 
+
+Deal with algorithms and assigning states to objects. Describe not only classes and objects but their interactions.
+
+examples:
+
+1. **template method pattern**
+2. command
+3. visitor
+4. interpreter
+5. memento
+6. strategy
+7. iterator
+8. mediator
+9. state
+10. chain of responsibility
+
+##### Template Method Pattern
+
+
+* **problem**: a method consists both from fixed but also from changeable elements
+* **solution**: 
+  * define a template method, that comprises the scaffolding of the method
+  * the algorithm is concretely implemented in the inheriting subclasses
+  * fixed components making up the method are factored to the superclass
+
 
 ### Rationales (Communication of Decisions)
 
@@ -322,6 +509,5 @@ How are rationales described:
 * decisions: 
   * relates to one or more open questions
   * summarizes the chosen options and arguments that support it
-
 
 
