@@ -11,7 +11,7 @@ Deals with the following topics:
 
 1. Introduction to Modelling 
 2. Class diagrams
-3. Interaction diagrams (sequence diagrams)
+3. Interaction diagrams 
 4. State Diagrams 
    1. UML State diagrams
    2. Dialog models
@@ -111,7 +111,7 @@ important components of class diagrams:
 * interfaces: a view on a class (a contract)
 
 
-### Interaction Diagrams (Sequence Diagrams)
+### Interaction Diagrams 
 
 interaction diagrams describe communication between various actors.
 
@@ -441,6 +441,30 @@ Examples:
   S s = S.getInstance(); // s refers to the single central initialized static instance of S
   ```
 
+##### Factory Method
+
+* **problem**: When creating an object, we don't want to have to specify their exact classes, i.e we should be able to choose between variouis variants of a product. 
+* **solution**: 
+  * Rather than creating an object by calling a constructor, the creation of the object is delegated to a factory method
+  * The code that creates the object is outsourced to an own class called Factory or Creator. Optionally the Creator / Factory class can be abstract or an interface and the object creation can be implemented in subclasses inheriting from it $\Rightarrow$ subclass decides which object type is to be created. 
+  
+![factory design pattern](./imgs/factory-design-pattern.png){width="90%"}
+
+##### Builder
+
+* **problem**: Objects of the a class can be very different if they are complex, requiring a different constructions. How can the creation of a complex object be simplified,
+  specifically, how can the creation of a process be abstracted from its representation, so that the details of the way the object is created can be later easily changed,
+  without having to modify the class? 
+* **solution**: Encapsulate the building of a complex object in a separate Builder class, to which the creaetion of the object is delegated to, instead of creating it directly
+
+![builder pattern](./imgs/builder-design-pattern.png){width="70%"}
+
+* **Director**: assembles the object from the sub-parts whose construction is delegated to `Builder` objects.
+* **Builder**: the abstract interface for creating objects (products)
+* **ConcreteBuilder**: provides the implementation for the builder
+
+
+
 ##### Abstract Superclass 
 
 * **problem**: different classes contain identical groups of attributes and methods 
@@ -454,8 +478,8 @@ Deal with combinations and relationships of classes $\Rightarrow$ allow building
 examples:
 
 1. **Composite**
-2. adapter
-3. proxy
+2. **adapter**
+3. **proxy**
 4. bridge
 5. director
 6. facade
@@ -468,6 +492,28 @@ examples:
 
 ![composite design pattern](./imgs/composite-design-pattern.png){width="85%"}
 
+##### Adapter Pattern
+
+Also called wrapper
+
+* **problem**: A Class A (client) requires a class with a certain interface. There is another class B, that provides a different kind of interface.
+  We would like to use class B in  class A, even though the interface that B provides is not what A requires. 
+* **solution**: Define a separate adapter class that converts the incompatible interface of class B (adaptee, i.e. the class to be adapted)
+  into the interface that A expects. (this interface is called the target interface). 
+
+![adapter design pattern](./imgs/adapter-design-pattern.png){width="90%"}
+
+##### Proxy
+
+* **problem**: 
+  * Access to an object should be controlled (because it is expensive or sensitive from a security standpoint)
+  * Additional functionality should be provided when accessing an object
+* **solution**: A separate proxy object that can be used as a substitute for the other object (subject). Proxy implements necessary additional functionality.
+
+![proxy design pattern](./imgs/proxy-design-pattern.png){width="85%"}
+
+
+
 #### Behavioral Patterns 
 
 Deal with algorithms and assigning states to objects. Describe not only classes and objects but their interactions.
@@ -476,23 +522,49 @@ examples:
 
 1. **template method pattern**
 2. command
-3. visitor
-4. interpreter
-5. memento
-6. strategy
-7. iterator
-8. mediator
-9. state
-10. chain of responsibility
+3. **observer**
+4. **visitor**
+5. interpreter
+6. memento
+7. **strategy**
+8. iterator
+9.  mediator
+10. state
+11. **chain of responsibility**
 
 ##### Template Method Pattern
-
 
 * **problem**: a method consists both from fixed but also from changeable elements
 * **solution**: 
   * define a template method, that comprises the scaffolding of the method
   * the algorithm is concretely implemented in the inheriting subclasses
   * fixed components making up the method are factored to the superclass
+
+
+##### Chain of Responsibility
+
+* **problem**: 
+  * The sender of a request / message and the receiver of the message shouldn't be coupled, or only loosely coupled. 
+  * It should be possible for more than one receiver to handle the request in flexible ways
+* **solution**:  A chain of receiver objects that, depending on run-time conditions, either handle the request or forward it to the next receiver. This enables a flexible handling of the request. In other words the sender does not know which object will handle the request or how exactly. 
+
+##### Observer
+
+
+* **problem**: There is a one to many relationship between an object called **subject**, and its dependencies, called **observers**. 
+  Observers must be notified whenever the state of the subject changes and react to it. In other words observers "observe" the subject
+  and react to its state changes.
+* **solution**: 
+  * Subject maintains a list of observers. Observers have methods to subscribe to or unsubscribe from the list. 
+  * Subject has a method called `notify()`, that calls the `update()` method in each of the observers that are in the subscribers list.
+    The `update()` method of each observer updates each one, making it to react to the state change of the subject. 
+
+![observer pattern](./imgs/observer-deisng-pattern.png){width="105%"}
+
+
+##### Visitor
+
+##### Strategy 
 
 
 ### Rationales (Communication of Decisions)
