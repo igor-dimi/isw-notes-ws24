@@ -56,38 +56,71 @@ Characteristics of a formal notation:
 A notation is a 'theory' that enables to reason about and manipulate representations of objects
 from the domain. 
 
-#### UML
 
-defines: 
+### 4 + 1 Architectural View Model
 
-* Structure diagrams $\rightarrow$ statics of the system
+4 different viewpoints representing different stakeholders:
+
+1. **Logical View** $\rightarrow$ **End-users**: functionality that the system provides to the end-users / clients. 
+   
+   UML diagrams: 
+   
+   * class diagrams 
+   * state diagrams
+   
+1. **Process View**: dynamic aspects of the system, description of the system processes, how they communicate, run-time behavior of the system: 
+   concurrency, distribution, performance, scalability, etc. 
+
+   UML diagrams:
+
+   * sequence diagram
+   * communication diagram
+   * activity diagram
+ 
+2. **Development (Implementation) View** $\rightarrow$ **Programmers**: system from programmers' perspective, concerned with software management. 
+
+   UML diagrams:
+
+   * package diagram
+   * component diagram
+
+3. **Physical View** $\rightarrow$ **System-engineer**: topology of the software components on the physical layer as well as the physical connection between
+   these components. 
+
+   UML diagrams: 
+
+   * deployment diagram
+
+* (+1): **Scenarios / Use Case View**: 
+  * Architecture is described using a small set of use cases or scenarios
+  * Scenarios are Sequences of interactions between objects and between processes. 
+  * used to identify architectural elements and to illustrate and validate
+    the architectural design. 
+  * used as a starting point for tests of an architecture prototype
+
+
+
+
+### UML
+
+UML diagram categories: 
+
+* Structure diagrams $\rightarrow$ statics of the system:
+  * **class**
+  * **object**
+  * component
+  * deployment
+  * package
+  * composite structure
 * Behavior diagrams $\rightarrow$ dynamics of the system
-  * interactions 
-  * flows 
-  * state transitions
-
-##### Structure Diagrams
-
-* Design:
-  * Class Diagram (analysis and design)
-  * Object diagram (special cases)
-  * package diagram (bundles of classes)
-* Architecture:
-  * compositional structure diagram
-  * logical component diagram (internal and external view)
-  * distribution diagram (over the physical components)
-
-##### Behavior Diagrams
-
-* Flows:
-  * Use case diagram (overview of the use case)
-  * activity diagram (sequences of activities)
-  * state diagram (sequences of states)
-* interaction:
-  * sequence diagram (sequence of messages)
-  * communication diagram (focus on a component)
-  * time diagram (communication between automata)
-  * interaction overview diagram (interaction of multiple interactions)
+  * interaction:
+    * **sequence**
+    * communication
+    * interaction overview
+    * timing
+  * Use Case 
+  * **Dialgue Model / Activity**
+  * **State**
 
 In the lecture especially:
 
@@ -95,9 +128,20 @@ In the lecture especially:
 * object diagrams
 * interaction diagrams
 * state diagrams
+* Dialogue Model / Activity Diagrams
 
+#### Structure Diagrams
 
-### Class Diagrams 
+* Design:
+  * Class Diagram (analysis and design) (logical view)
+  * Object diagram (special cases) (logical view)
+  * package diagram (bundles of classes) (development view)
+* Architecture:
+  * compositional structure diagram
+  * logical component diagram (internal and external view)
+  * distribution diagram (over the physical components)
+
+##### Class Diagrams 
 
 important components of class diagrams:
 
@@ -110,8 +154,52 @@ important components of class diagrams:
 * generalization / specialization relationship (inheritance)
 * interfaces: a view on a class (a contract)
 
+#### Behavior Diagrams
 
-### Interaction Diagrams 
+* Flows:
+  * Use case diagram (overview of the use case)
+  * Dialogue model / activity diagram (sequences of activities)
+  * state diagram (sequences of states)
+* interaction:
+  * sequence diagram (sequence of messages)
+  * communication diagram (focus on a component)
+  * time diagram (communication between automata)
+  * interaction overview diagram (interaction of multiple interactions)
+
+##### State Diagrams
+
+UML extension of traditional state diagram aims to overcome some of its limitations.
+
+specific to UML:
+
+* hierarchically nested states
+* orthogonal regions
+* extended notion of actions
+* characteristics of both Mealy and Moore machines:
+  * Mealy: actions that depend both on the state and the triggering event
+  * Moore: entry and exit action (only associated with states, not transitions)
+
+elements of UML state machines:
+
+* event: 
+* state:
+* extended state:
+* guard condition:
+* action and transition: 
+* run-to-completion execution model: 
+* hierarchically nested states: 
+* orthogonal regions: 
+* entry and exit actions : 
+* internal transitions: 
+* transition execution sequence: 
+* local versus external transitions: 
+* event deferral:
+
+Many software systems are **event-driven** (also called reactive). 
+
+##### Dialog Models / Activity
+
+##### Interaction Diagrams 
 
 interaction diagrams describe communication between various actors.
 
@@ -122,9 +210,17 @@ Various uml interaction diagrams:
 * time diagram
 * interaction overview diagram
 
+###### Sequence Diagram
+
+Also called event diagrams or event scenarios. 
+
+Show process interactions arranged in time **sequence**. Depicts the processes
+and objects involved and the sequence of messages exchanged to carry out
+functionality. 
+
+
 ![seq diag](./imgs/seq-diag-synch.png){width=50%}
 
-### State Diagrams
 
 ### Class Design with OOAD
 
