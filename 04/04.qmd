@@ -168,7 +168,10 @@ important components of class diagrams:
 
 ##### State Diagrams
 
-UML extension of traditional state diagram aims to overcome some of its limitations.
+
+
+UML extension of traditional state diagram aims to overcome some of the limitations FSMs.
+Thus UML state machines is an extension to the traditional mathematical FSMs. 
 
 specific to UML:
 
@@ -179,15 +182,69 @@ specific to UML:
   * Mealy: actions that depend both on the state and the triggering event
   * Moore: entry and exit action (only associated with states, not transitions)
 
-elements of UML state machines:
+Many software systems are **event-driven** (also called reactive):
 
-* event: 
-* state:
-* extended state:
-* guard condition:
-* action and transition: 
-* run-to-completion execution model: 
-* hierarchically nested states: 
+* mouse click
+* button press
+* time tick
+* arrival of a data packet
+* ...
+
+Software systems react to events by taking **actions** and changing to another state $\Rightarrow$ **state transition**. 
+Advantages of using an FSM model to underlie the code:
+
+* reduce the number of execution paths through the code
+* simplify the conditions tested at each branching point
+* simplify switching between different modes of execution.
+
+###### Basic UML State Diagrams
+
+* state: rounded rectangles labeled with state names
+* transitions: arrows labeled with the triggering **events** optionally followed by list of **actions**
+* event / trigger: the thing that causes the state transition
+* action: the optional thing carried out by the system as a response to the event
+* initial transition: originates from the solid circle (the default initial state when the system first begins - entry point)
+  every diagram should have it. initial transitions can have associated actions
+
+![basic uml state diagram](./imgs/basic_UML_SM.png){width="85%"}
+
+###### Elements of UML state machines:
+
+* **event / trigger**: something that happens that effects the system. 
+  * can have associated parameters
+  * an event instance can have a long life-cycle
+* **state**: Governs the reaction of the state machine to events.
+  * a state can abstract away all possible (but irrelevant) event sequences and only capture the relevant ones.
+  * in the context of software systems a state is a single variable that can have only a limited number of values, usually
+    an provided by an enum type $\Rightarrow$ the value of the state variables fully defines thet current state of the system at any given time
+* **extended state**: However interpreting the whole state of machines can become impractical very quickly (state explosion)
+  $\Rightarrow$ in UML state is spilt up into:
+  * enumerable state variable. Corresponds to the qualitative aspect of the whole state
+  * all other variables which (**extended state**).  Corresponds to the quantitative aspect of the whole state. 
+    Quantitative aspects do not lead to a state change. (See below for more explanation)
+* **guard condition**: in extended UML a transition can have a guard $\Rightarrow$ transitions only fires if the guard is evaluated
+  to true, related to extended states, simplifies number of states.
+* **actions and transitions**: response of the system to an **even/trigger**. 
+  * **action**: 
+    * changing a variable
+    * performing I/O
+    * invoking a function
+    * generating another event instance
+    * changing to another state
+    * ...
+  * **state transition**: switching from one state to another state
+* **run-to-completion execution model (RTC)**: processing of each event must carried out to completion before the next event
+  can be carried out. 
+    * incoming event can not interrupt this and are instead stored in an event queue
+    * This avoids internal concurrency issues within a single state machine.
+    * During even processing the system is unresponsive / unobservable. 
+    * Advantage: simplicity
+    * Disadvantage: responsiveness of a state machines is determined by its longest RTC step. 
+* hierarchically nested states: repeating transitions common to a group of states can be factored out as a super (outer) state.
+  * the complexity of the state machine doesn't explode (see calculator example below for more details)
+  * semantics: 
+    * if a system is in a substate surrounded by a superstate, it is automatically also in that superstate, i.e. the superstate is inherited.
+    * the state machine will try to handle any event first in the context of the substate, but if it is not defined, it will delegated to the superstate.  
 * orthogonal regions: 
 * entry and exit actions : 
 * internal transitions: 
@@ -195,7 +252,29 @@ elements of UML state machines:
 * local versus external transitions: 
 * event deferral:
 
-Many software systems are **event-driven** (also called reactive). 
+###### Extended State Example
+
+Assume we want to introduce a limit to the number of times keys can be pressed on keyboard, from the beginning of its 
+execution. In traditional way we would have to introduce 1000 states that would approach the final state incrementally
+(state explosion). Instead this **quantitative information** can be captured in an additional variable that does not 
+effect the **qualitative state** of the system, and is managed via **guard conditions**:
+
+![extended uml state machine exmaple](./imgs/extended_UML_SM.png){width="95%"}
+
+###### Hierarchical States Calculator Example
+
+Modelling a simple pocket calculator with traditional FSM introduces many repetitive transitions:
+
+* for every state the event 'C' changes the state to **operand1**
+* for every state the event 'OFF' changes to the exit state. 
+
+Using the superstate **on**, this common behavior factored out and the total number of transitions is greatly reduced. 
+Now when the system is, say, in the state **opEntered** and event 'C' takes place, it can't be handled by the inner state since it is not defined. Then, by the semantics of the UML state machines, this event is relegated to the outer state, where it is defined to transition
+to itself. From there it enters the inner states entry point, which changes the state to **operand1**. 
+
+Analogue for 'OFF'. 
+
+![hierachical states calculator example](./imgs/uml-nested-example.png)
 
 ##### Dialog Models / Activity
 
