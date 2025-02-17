@@ -485,7 +485,7 @@ window.Quarto = {
 </ul>
 <section id="state-diagrams" class="level5">
 <h5 class="anchored" data-anchor-id="state-diagrams">State Diagrams</h5>
-<p>UML extension of traditional state diagram aims to overcome some of its limitations.</p>
+<p>UML extension of traditional state diagram aims to overcome some of the limitations FSMs. Thus UML state machines is an extension to the traditional mathematical FSMs.</p>
 <p>specific to UML:</p>
 <ul>
 <li>hierarchically nested states</li>
@@ -497,15 +497,86 @@ window.Quarto = {
 <li>Moore: entry and exit action (only associated with states, not transitions)</li>
 </ul></li>
 </ul>
-<p>elements of UML state machines:</p>
+<p>Many software systems are <strong>event-driven</strong> (also called reactive):</p>
 <ul>
-<li>event:</li>
-<li>state:</li>
-<li>extended state:</li>
-<li>guard condition:</li>
-<li>action and transition:</li>
-<li>run-to-completion execution model:</li>
-<li>hierarchically nested states:</li>
+<li>mouse click</li>
+<li>button press</li>
+<li>time tick</li>
+<li>arrival of a data packet</li>
+<li>…</li>
+</ul>
+<p>Software systems react to events by taking <strong>actions</strong> and changing to another state <span class="math inline">\(\Rightarrow\)</span> <strong>state transition</strong>. Advantages of using an FSM model to underlie the code:</p>
+<ul>
+<li>reduce the number of execution paths through the code</li>
+<li>simplify the conditions tested at each branching point</li>
+<li>simplify switching between different modes of execution.</li>
+</ul>
+<section id="basic-uml-state-diagrams" class="level6">
+<h6 class="anchored" data-anchor-id="basic-uml-state-diagrams">Basic UML State Diagrams</h6>
+<ul>
+<li>state: rounded rectangles labeled with state names</li>
+<li>transitions: arrows labeled with the triggering <strong>events</strong> optionally followed by list of <strong>actions</strong></li>
+<li>event / trigger: the thing that causes the state transition</li>
+<li>action: the optional thing carried out by the system as a response to the event</li>
+<li>initial transition: originates from the solid circle (the default initial state when the system first begins - entry point) every diagram should have it. initial transitions can have associated actions</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/basic_UML_SM.png" class="img-fluid figure-img" style="width:85.0%"></p>
+<figcaption>basic uml state diagram</figcaption>
+</figure>
+</div>
+</section>
+<section id="elements-of-uml-state-machines" class="level6">
+<h6 class="anchored" data-anchor-id="elements-of-uml-state-machines">Elements of UML state machines:</h6>
+<ul>
+<li><strong>event / trigger</strong>: something that happens that effects the system.
+<ul>
+<li>can have associated parameters</li>
+<li>an event instance can have a long life-cycle</li>
+</ul></li>
+<li><strong>state</strong>: Governs the reaction of the state machine to events.
+<ul>
+<li>a state can abstract away all possible (but irrelevant) event sequences and only capture the relevant ones.</li>
+<li>in the context of software systems a state is a single variable that can have only a limited number of values, usually an provided by an enum type <span class="math inline">\(\Rightarrow\)</span> the value of the state variables fully defines thet current state of the system at any given time</li>
+</ul></li>
+<li><strong>extended state</strong>: However interpreting the whole state of machines can become impractical very quickly (state explosion) <span class="math inline">\(\Rightarrow\)</span> in UML state is spilt up into:
+<ul>
+<li>enumerable state variable. Corresponds to the qualitative aspect of the whole state</li>
+<li>all other variables which (<strong>extended state</strong>). Corresponds to the quantitative aspect of the whole state. Quantitative aspects do not lead to a state change. (See below for more explanation)</li>
+</ul></li>
+<li><strong>guard condition</strong>: in extended UML a transition can have a guard <span class="math inline">\(\Rightarrow\)</span> transitions only fires if the guard is evaluated to true, related to extended states, simplifies number of states.</li>
+<li><strong>actions and transitions</strong>: response of the system to an <strong>even/trigger</strong>.
+<ul>
+<li><strong>action</strong>:
+<ul>
+<li>changing a variable</li>
+<li>performing I/O</li>
+<li>invoking a function</li>
+<li>generating another event instance</li>
+<li>changing to another state</li>
+<li>…</li>
+</ul></li>
+<li><strong>state transition</strong>: switching from one state to another state</li>
+</ul></li>
+<li><strong>run-to-completion execution model (RTC)</strong>: processing of each event must carried out to completion before the next event can be carried out.
+<ul>
+<li>incoming event can not interrupt this and are instead stored in an event queue</li>
+<li>This avoids internal concurrency issues within a single state machine.</li>
+<li>During even processing the system is unresponsive / unobservable.</li>
+<li>Advantage: simplicity</li>
+<li>Disadvantage: responsiveness of a state machines is determined by its longest RTC step.</li>
+</ul></li>
+<li>hierarchically nested states: repeating transitions common to a group of states can be factored out as a super (outer) state.
+<ul>
+<li>the complexity of the state machine doesn’t explode (see calculator example below for more details)</li>
+<li>semantics:
+<ul>
+<li>if a system is in a substate surrounded by a superstate, it is automatically also in that superstate, i.e.&nbsp;the superstate is inherited.</li>
+<li>the state machine will try to handle any event first in the context of the substate, but if it is not defined, it will delegated to the superstate.<br>
+</li>
+</ul></li>
+</ul></li>
 <li>orthogonal regions:</li>
 <li>entry and exit actions :</li>
 <li>internal transitions:</li>
@@ -513,7 +584,33 @@ window.Quarto = {
 <li>local versus external transitions:</li>
 <li>event deferral:</li>
 </ul>
-<p>Many software systems are <strong>event-driven</strong> (also called reactive).</p>
+</section>
+<section id="extended-state-example" class="level6">
+<h6 class="anchored" data-anchor-id="extended-state-example">Extended State Example</h6>
+<p>Assume we want to introduce a limit to the number of times keys can be pressed on keyboard, from the beginning of its execution. In traditional way we would have to introduce 1000 states that would approach the final state incrementally (state explosion). Instead this <strong>quantitative information</strong> can be captured in an additional variable that does not effect the <strong>qualitative state</strong> of the system, and is managed via <strong>guard conditions</strong>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/extended_UML_SM.png" class="img-fluid figure-img" style="width:95.0%"></p>
+<figcaption>extended uml state machine exmaple</figcaption>
+</figure>
+</div>
+</section>
+<section id="hierarchical-states-calculator-example" class="level6">
+<h6 class="anchored" data-anchor-id="hierarchical-states-calculator-example">Hierarchical States Calculator Example</h6>
+<p>Modelling a simple pocket calculator with traditional FSM introduces many repetitive transitions:</p>
+<ul>
+<li>for every state the event ‘C’ changes the state to <strong>operand1</strong></li>
+<li>for every state the event ‘OFF’ changes to the exit state.</li>
+</ul>
+<p>Using the superstate <strong>on</strong>, this common behavior factored out and the total number of transitions is greatly reduced. Now when the system is, say, in the state <strong>opEntered</strong> and event ‘C’ takes place, it can’t be handled by the inner state since it is not defined. Then, by the semantics of the UML state machines, this event is relegated to the outer state, where it is defined to transition to itself. From there it enters the inner states entry point, which changes the state to <strong>operand1</strong>.</p>
+<p>Analogue for ‘OFF’.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/uml-nested-example.png" class="img-fluid figure-img"></p>
+<figcaption>hierachical states calculator example</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="dialog-models-activity" class="level5">
 <h5 class="anchored" data-anchor-id="dialog-models-activity">Dialog Models / Activity</h5>
