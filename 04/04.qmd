@@ -240,14 +240,14 @@ Advantages of using an FSM model to underlie the code:
     * During even processing the system is unresponsive / unobservable. 
     * Advantage: simplicity
     * Disadvantage: responsiveness of a state machines is determined by its longest RTC step. 
-* hierarchically nested states: repeating transitions common to a group of states can be factored out as a super (outer) state.
+* **hierarchically nested states**: repeating transitions common to a group of states can be factored out as a super (outer) state.
   * the complexity of the state machine doesn't explode (see calculator example below for more details)
   * semantics: 
     * if a system is in a substate surrounded by a superstate, it is automatically also in that superstate, i.e. the superstate is inherited.
     * the state machine will try to handle any event first in the context of the substate, but if it is not defined, it will delegated to the superstate.  
-* orthogonal regions: 
-* entry and exit actions : 
-* internal transitions: 
+* **orthogonal regions**: compatible and independent regions of states that happen simultaneously. (AND-decomposition). $\Rightarrow$ reduction of combinatorial explosion of sates. 
+* **entry and exit actions**: always automatically executed upon entry to state or an exit from a state. $\Rightarrow$ guaranteed *initialization* and *cleanup*. 
+* **internal transitions**: self transitions can be instead represented as internal transition (without executing the entry and exit actions)
 * transition execution sequence: 
 * local versus external transitions: 
 * event deferral:
@@ -258,6 +258,8 @@ Assume we want to introduce a limit to the number of times keys can be pressed o
 execution. In traditional way we would have to introduce 1000 states that would approach the final state incrementally
 (state explosion). Instead this **quantitative information** can be captured in an additional variable that does not 
 effect the **qualitative state** of the system, and is managed via **guard conditions**:
+
+basically, extended state == variable not represented as state, that interacts with guard conditions.
 
 ![extended uml state machine exmaple](./imgs/extended_UML_SM.png){width="95%"}
 
@@ -274,9 +276,19 @@ to itself. From there it enters the inner states entry point, which changes the 
 
 Analogue for 'OFF'. 
 
-![hierachical states calculator example](./imgs/uml-nested-example.png)
+![hierarchical states calculator example](./imgs/uml-nested-example.png)
 
 ##### Dialog Models / Activity
+
+Dialog Model: state diagrams applied to UI.
+
+* state $\Rightarrow$ view
+* transition $\Rightarrow$ execution of a function 
+
+History Sates:
+
+* H*: the previous innermost view / state
+* H: the previous superstate. 
 
 ##### Interaction Diagrams 
 
@@ -291,15 +303,23 @@ Various uml interaction diagrams:
 
 ###### Sequence Diagram
 
+
+In programs many objects collaborate with each other to carry out functionality. 
+An objects collaborates with another by **sending messages** to it.
+
+* sending message to an object $\Rightarrow$ calling it's method: `myCDplayer.play("Song 1");` 
+* `myCDplayer` itself can collaborate with it's own instance (member) variables, and the input parameter object `"Song 1"`
+* Collaboration between objects java implies having references to the same object from several locations in the program.
+
 Also called event diagrams or event scenarios. 
 
 Show process interactions arranged in time **sequence**. Depicts the processes
 and objects involved and the sequence of messages exchanged to carry out
 functionality. 
 
-
 ![seq diag](./imgs/seq-diag-synch.png){width=50%}
 
+rectangles represent the duration during which the object is active. 
 
 ### Class Design with OOAD
 
