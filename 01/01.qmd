@@ -1,0 +1,32 @@
+## Introduction to SE
+
+Core goals of software engineering:
+
+* **quality**: software fulfills the requirements  $\Leftarrow$ **this**
+* **users**: software is useful for the users
+* **developers**: it is easy to develop, maintain and modify the software
+* **cost / time**: software can be implemented within the given cost & time constraints $\Rightarrow$ project management
+
+Main task categories of software engineering:
+
+* Development:
+  * Determining the software context 
+  * requirements engineering
+  * architecture
+  * detailed design
+  * implementation
+  * configuration management
+* Quality management
+  * product: testing, inspection, metrics
+  * process: measurements, improvements
+* Evolution:
+  * maintenance
+  * further development / modification
+  * re-engineering / change management
+* Project management:
+  * team
+  * costs
+  * time / deadlines
+  * risks
+  * contractor / client
+
