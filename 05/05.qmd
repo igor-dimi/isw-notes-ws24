@@ -18,3 +18,197 @@ topics:
    2. Metrics
    3. Inspection
 5. Analytical Quality assurance at large
+
+
+### Introduction
+
+Core goals of software engineering:
+
+* **quality**: software fulfills the requirements  $\Leftarrow$ **this**
+* **users**: software is useful for the users
+* **developers**: it is easy to develop, maintain and modify the software
+* **cost / time**: software can be implemented within the given cost & time constraints $\Rightarrow$ project management
+
+Methods of quality control are based on the following questions:
+
+* what are the requirements? 
+* what errors are there in the system?
+* how do the errors originate and manifest in the system?
+* how to prevent errors? 
+
+#### Terms
+
+Validation vs Verification:
+
+* **Verification**: the product fulfills requirements
+* **Validation**: the requirements correspond to users wishes
+
+Error and deficiency
+
+* **Error**: discrepancy between the product and the requirements
+* **Deficiency**: a requirement or an expectation is fulfilled insufficiently 
+
+Further terms:
+
+1. individual mistake by a person $\Rightarrow$ standards, norms, training
+2. erroneous state / deficiency in a program $\Rightarrow$ debugging
+3. error that manifest in the system $\Rightarrow$ testing
+
+Above 1 $\Rightarrow$ 2 $\Rightarrow$ 3. 
+
+How is quality control achieved:
+
+* **Quality management**: general 
+* **Quality assurance / QA**: concrete processes to achieve quality
+  * Constructive QA $\Rightarrow$ design, implementation, programming
+  * Analytical QA $\Rightarrow$ formal proof, inspection, static linting, dynamic testing
+  * Organizational QA $\Rightarrow$ project management
+
+
+### Testing
+
+#### Introduction
+
+Goals is to find errors that manifest in the system (Fehlerwirkung) $\Rightarrow$ Systematic test:
+
+* Pre-/Postconditions are defined precisesly
+* Inputs are systematically specified
+* Results are documented and analyzed w.r.t testing criteria
+
+combinatorial state explosion $\Rightarrow$ Complete testing is never possible
+
+Terms:
+
+* **Base**: all documents that the test case is derived from (requirements etc)
+* **Test case**: consists of
+  * collection of inputs
+  * preconditions and edge cases
+  * expected results
+  * expected exceptions 
+* **Precondition**: the state of the object / environment, that must be specified, s.t. a test-case can be run
+* **Postcondition** the state of the object / environment after the execution of the test case.
+* **Test run**: execution of test or the suit of tests on a specific version of the test object
+* **Reaction of the test object**: The sequence of internal states, reactions and outputs of the tested object. 
+  They must agree with the requirements / expectation (ideally tested automatically)
+* **specification**: determining test objects and their test cases, choosing the testing methods
+  * derivation from the documentation and logical test cases
+  * condition to end the test
+
+Test stages:
+
+1. Component / Unit Test
+2. Integration test: integrating components with each other
+3. System test: whole system
+4. acceptance test: after release, by the user / client
+
+(1)$\Rightarrow$ (2) $\Rightarrow$ (3) $\Rightarrow$ (4)
+
+
+Regression Test: after changes in the software test to see if changes craeted new errors
+
+#### Test-case Specification
+
+Elements of a test case:
+
+* expected behavior based on a **test oracle**:
+  * requirements specification
+  * user manual
+  * executable prototype (formal specification)
+  * old version
+* two abstraction levels when describing the test case
+  * logical: range of input / output, possibly via equivalence classes
+  * concrete: specific input / output values, possibly representatives of equivalence classes
+
+Description of a test case:
+
+* name
+* tested requirement / relation to a requirement
+* type: component, integration, system, acceptance
+* precondition
+* postcondition
+* test infrastructure
+* description of test steps. For each step:
+  * input
+  * expected output
+  * expected exception
+
+#### Component
+
+**Component**: a self-contained code unit $\Rightarrow$ class, function, module
+
+typical erroneous behavior of a component:
+
+* non-termination
+* incorrect or incomplete result
+* unexpected / incorrect error message
+* inconsistent memory
+* superfluous resource load
+* unexpected exception behavior, e.g. crash
+
+Component test types:
+
+* Black-box: no knowledge of the internal implementation of the object, only the interface and specification.
+* White-box: purposeful testing inner elements and the flow of execution, using the knowledge of its internal structure.
+* Intuitive: based on knowledge / experience of typical errors $\Rightarrow$ supplementary to the two systematic test above.
+
+#### Black-box Component Testing
+
+Properties of a black-box test:
+
+* Test cases are derived from the input / output behavior of the operation (specification)
+* The goal when deriving the text cases is the coverage of:
+  * input values
+  * output values
+  * specified exceptions
+* especially tests that all the requirements on the operation are satisfied.
+
+Test case description for a an operation / method test:
+
+* name
+* tested component (class)
+* type: component test
+* precondition: regarding relevant component data and restriction on the input
+* postcondition: updated component data
+* test steps: detailed description of the steps, 
+  * input
+  * expected output
+  * expected exception
+
+##### Equivalence Class Tests
+
+Equivalence class:
+
+* **Idea**: Partitioning of the range of input / output values into classes, such that values from the same equivalence class demonstrate conceptually same behavior and a single value from that class can be chosen as a representative.
+* **Boundary values**: if the rang of values of an EQ are ordered, then
+  * values on both of the exact boundaries (min and max)
+  * as well as the neighbors of the boundaries: pred(min), succ(min), pred(max), succ(max)
+
+typical equivalence classes:
+
+* input: 
+   * Valid input EQ (GEK): Valid input range, possibly subdivided w.r.t. the boundary values
+   * Invalid input EQ (UEK): invalid input range
+ * output:
+   * Valid output EQ (GAK): partitioning of **valid input ranges** s.t. various typical output values are covered (also possible subdivisions w.r.t boundary values)
+   * Invalid output EQ (UAK): Exceptions 
+
+Deriving test cases based on EQ
+
+* if there are **multiple** inputs:
+  * combine all valid EQs of various inputs (cartesian product) 
+    ({GEK1, GAK1} x ... x {GEKn, GAKn})
+  * combine all valid EQs with all possible invalid EQs
+    {GEK1, GAK1, ... , GEKn, GAKn} x {UEK1, UAK1, ..., UEKn, UAKn}
+
+**Simplification**:
+
+* only frequent combinations
+* only test cases with boundary values
+* only pair-wise combinations
+
+**Minimal**:
+
+* each valid equivalence appears in one test case
+
+
+
