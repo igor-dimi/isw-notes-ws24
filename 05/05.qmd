@@ -210,5 +210,103 @@ Deriving test cases based on EQ
 
 * each valid equivalence appears in one test case
 
+#### White-box Component Test 
 
+white-box component test: 
+
+* Test cases are derived from the knowledge of the code base. 
+* The goal is to test weather all of parts of the code are correct. 
+* Requirements specification is additionally necessary as a **test oracle**
+  , i.e to determine what the results of the tests should be.
+
+Main goal is the achieve **coverage** of the code:
+
+* Statement Coverage
+* Branching Coverage
+* Path Coverage
+
+**Coverage** can be seen on the **control-flow graph**
+
+##### Control-flow Graph
+
+Control-flow graph is an abstraction of the code, s.t.:
+
+* consecutive statements are united
+* all branches are visible: multiple execution flows from a statement $\Rightarrow$ individual node. 
+* jumps $\Rightarrow$ individual nodes
+* possibly few nodes!
+
+![control-flow graph example](./imgs/bin-search-code-coverage-control-flow.png) 
+
+Rules:
+
+1. consecutive statements until the end of a block, especially until the next if-branching or while-loop are combined to a single node.
+   (the branching or loop condition can be included in the node as well)
+2. if a block consist of multiple nodes the brace closing the block gets its own individual node. (other than the brace closing the program)
+3. The node of the negative case of an if-else branch contains the else line and the following statements. 
+4. The condition of a loop-statement get an individual node (due to the jump). 
+5. If earlier `return` statements exist in the program, the `return` statement becomes a node that can be reached in various ways. 
+
+##### Statement, Branching, Path and Term Coverage
+
+###### Statement Coverage
+
+Nodes in the control flow graph are (combinations) of statements. 100%-statement coverage $\Rightarrow$ all nodes of the graph are visited.
+In the previous example: 
+
+* (1-4) $\Rightarrow$ (5-7) $\Rightarrow$ (8) $\Rightarrow$ (9 - 10) 
+  $\Rightarrow$ (13,14) $\Rightarrow$ (15) $\Rightarrow$ (18) 
+  $\Rightarrow$ (19) $\Rightarrow$ (8) $\Rightarrow$ (9-10) $\Rightarrow$ (13-14)
+  $\Rightarrow$ (16,17) $\Rightarrow$ (18) $\Rightarrow$ (19) $\Rightarrow$ (8)
+  $\Rightarrow$ (20) $\Rightarrow$ (21)
+
+Which input achieves this sequence? $\Rightarrow$ `key == 15, a == [1, 15, 17, 19, 20]`
+
+::: {.callout-note}
+100% node coverage does **not** imply that all equivalence classes are covered
+:::
+
+###### Branch Coverage
+
+branch coverage: 
+
+* edges $\Rightarrow$ branches. 
+* branch coverage $\Rightarrow$ all edges are visited
+
+previous example doesn't cover the edge (1-4)$\Rightarrow$(21). 
+This corresponds to the case when the input array is empty: `a == []`, which in turn is a UAK.
+
+##### Term Coverage
+
+* For complex branching and loop conditions every part making up the condition should be covered, i.e. every term making up the complete expression is "activated" at least once, for both when the whole condition is true, as well as false.
+* Goal is to discover possible bugs due to individual terms. 
+
+Example: `if(X or Y)`. Here `X` and `Y` are terms and `X or Y` is the complex condition. 
+
+##### Path Coverage
+
+* Path: Sequences / combinations of edges
+* 100% path coverage not feasible & not easy to define. 
+
+#### Grey-box Testing: White-box + Black-Box
+
+1. first define black-box test cases: simpler, since only requirements are sufficient.
+2. check which portions of code are not reached by the black-box tests. (e.g. with coverage plugins)
+3. complete the test suite by writing additional white-box tests such that 100% statement and brach coverage is achieved. 
+
+#### Class / Object Test
+
+Previously we discussed testing smaller units, like methods. 
+We can also test larger components like classes (objects). 
+
+Individual methods of class $\Rightarrow$ gray-box. 
+
+But for testing interoperability of the methods of the whole class $\Rightarrow$ state based test based on the state diagram of the object.
+Testcases are then sequences of methods calls on the object that traverse various states of the object. 
+
+
+
+#### System Test
+
+#### Integration Test
 

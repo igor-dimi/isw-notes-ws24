@@ -1,0 +1,27 @@
+binsearch pseudocode implementation:
+
+
+```{.java code-line-numbers="true"}
+int binsearch(int[] a, int k) {
+    result.found = false;
+    result.index = -1;
+    if (a.length != 0) {
+        int bottom = 0;
+        int top = a.length - 1;
+        int mid;
+        while (bottom <= top) and !result.found {
+            mid = (top + bottom) / 2;
+            if (a[mid] == k) {
+                result.index = mid;
+                result.found = true;
+            } else {
+                if (a[mid] < k)
+                    bottom = mid + 1;
+                else 
+                    top = mid - 1;
+            } // end else
+        } // end while
+    } // end if
+    return result.index
+} //binsearch
+```
