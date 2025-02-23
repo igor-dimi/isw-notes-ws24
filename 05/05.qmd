@@ -305,8 +305,241 @@ But for testing interoperability of the methods of the whole class $\Rightarrow$
 Testcases are then sequences of methods calls on the object that traverse various states of the object. 
 
 
-
 #### System Test
 
+
+System test:
+
+* Test weather **client requirements** are correctly implemented $\Rightarrow$ **verification**.
+* Test environment should be as close to **production environment** as possible, but the production
+  environment itself is not usually completely appropriate because lack or control and risk of damage. 
+* Both individual SF's as well as **seqences of SFs** (Use Cases) can be tested.
+* quality features should be tested (performance, security etc) 
+
+##### Black-box test case specifications for system tests:
+
+* **name**
+* **tested system function**
+* **type**: systemtest
+* **precondition system**: precondition on the data
+* **precondition GUI**: what is shown on the GUI? $\Leftarrow$ new
+* **test steps**: actions that need to be taken on the GUI for data input and calling the SF.
+* **expected exceptions**: problems that can occur during the exeuction of the test $\Rightarrow$ Error message / error dialogue, or unavailability of SFs
+* **postcondition system**: postcondition on the data
+* **postcondition GUI**: What is the state of the GUI after successful execution? 
+
 #### Integration Test
+
+* test the interoperability of components
+* assumes that components are correct (tested)
+* test against an technical specification (design)
+* components are integrated incrementally, step-by-step.
+* requires **monitors**: units that observe interfaces between components.
+* requires **stubs / drivers** that temporarily stand for not yet tested components
+
+##### How are components interrelated ? 
+
+* **communication**: a component calls a method of another
+* **shared data**: components access shared resrouces (variables, data, database), or use 
+  same data as a communication medium (asynchronously). 
+* **shared system resources**: cpu, memory, hard disk. 
+
+##### Possible problems when components are integrated
+
+* Wrong receiver of a message
+* Wrong service / operation (operation is missing or incompletely implemented)
+* Wrong call time (preconditions of the receiver are not met)
+* Violation of message / calls sequences
+* Mistakes in data passing:
+  * passed data is syntactically incorrect
+  * passed data is interpreted incorrectly
+* Incorrect memory management (allocation / deallocation)
+* Mistakes in OS / Middleware (Database, ORB) calls
+* Configuration and version inconsistencies
+* Divergent / conflicting interpretations of requirements by different teams (especially in distributed development)
+* Incorrect usage of an interface.
+* Synchronization in real-time systems.
+
+##### Coverage in Integration Tests
+
+* Integration test should test the interoperability between **all** components.
+  * which order, which components first?
+  * difficult to achieve this systematically, because of various complex and circular interdependencies. 
+* $\Rightarrow$ Choice of an **Integration Strategy**:
+  * Top-to-bottom $\Rightarrow$ use **stubs** incrementally
+  * Bottom-up $\Rightarrow$ use **test drivers** incrementally
+  
+##### Integration testing specific to OO
+
+* test initially individual classes
+* subsequently test interdependent classes: due to lack of a strict hierarchy, top-bottom / bottom-up not perfectly applicable
+  $\Rightarrow$ scenario-based tests instead.
+
+How are objects / classes interdependent? 
+
+* communication: 
+  * operation calls
+  * using attributes of the other class
+  * objects / references to objects as input parameters to operations
+* shared data: global variables
+* shared (system) resources:
+  * composition / aggregation (initialization dependencies)
+  * shared namespace
+* inheritance: 
+
+Common OO errors:
+
+* operation is not available (configuration problems)
+* incorrect object / operation called (during runtime binding)
+* crash / deadlock due to usage of shared resources (process, interface)
+  
+### Static Testing
+
+again,
+
+* Software quality:
+  * organisational
+    * ...
+  * constructive: 
+    * ...
+  * analytical:
+    * **static analysis**: computers
+    * **inspection**: humans
+    * dynamic testing
+
+
+#### Static Analysis
+
+static analysis:
+
+* compilers
+* analyzer / linters
+
+things that can be enforced / checked / discovered:
+
+* syntax errors, as well as
+  * type checking
+  * not declared variables
+  * unreachable (dead) code
+  * array / field bounds
+  * consistent usage of interfaces
+* deviation from conventions / standards
+* conspicuous metrics
+* control-flow and data-flow anomalies
+
+#### Metrics
+
+things like:
+
+* documents (including code)
+  * quality
+  * volume and scope:
+    * LOC (lines of code) $\Rightarrow$ complexity and error-proneness
+    * Fan in / Fan-out: 
+      * Fan in: number of functions that call a function X. high Fan-in $\Rightarrow$ high coupling
+      * Fan-out: number of functions that are called by X. high $\Rightarrow$ complex control logic 
+    * Branching depth: high $\Rightarrow$ difficult to understand, error-prone
+
+##### OO Metrics
+
+* Complexity of an operation: number of test cases necessary to achieve branching coverage
+* Complexity of a class: 
+  * number of operations (weighted with their respective complexities, see above)
+  * inheritance depth
+  * number of operations that overwrite the superclass version
+* Low cohesion in a class: nu of op pairs that don't use a common attribute - nu of op pairs that use a common attribute
+* coupling: external dependencies: fan-in / out w.r.t to operations
+
+#### Inspection
+
+Manual checking by humans of all sorts of documents (including code):
+
+* necessary, because many documents can be checked by computers like:
+  * lastenheft
+  * pflichtenheft
+  * user manual
+  * ...
+
+##### Inspection Methods
+
+various methods:
+
+1. durchsicht
+2. stellungnahme
+3. technical review
+4. walkhrough
+5. design & code inspections
+
+increases in complexity and thoroughness. 
+
+how is a document reviewed:
+
+* reading techniques:
+  * ad-hoc
+  * check-list based: 
+    * can be derived from **guidelines**
+  * error-class / type based (similar to check-list)
+  * perspective based (primarily for document other than program code) $\Rightarrow$ good for discovering semantic deficiencies: 
+    the reviewer reviews the doc from a specific perspective, and looks for the error regarding that perspective and a scenario
+    * Perspective: 
+      * client
+      * developer
+      * tester
+    * Scenario: use the document in a sepcific way, to achieve a specific task with the goal to discover erros.
+
+###### Durchsicht
+
+* Carried out by one developer **alone**. 
+* Away from the screen, alone. 
+* Should be always done by the developer anyways, **not** redundant due to other inspection methods.
+
+###### Stellungnahme
+
+
+* There is no manager, the author of the unit organizes and leads the review. 
+* Author is the manager and selects the reviewers. 
+* document is modified during the review without a protocol.
+
+###### Technical Review
+
+* **goal**: find errors (**not** correct) and document them
+* **test subject**: any self-contained unit; method, module, class, document, etc
+* **required reference documents**: specification, guidelines, question catalogue
+* **team**: (author does review)
+  * reviewers (gutachter): get specific tasks and types of errors that they should look out for
+  * moderator: conducts / manages the review
+  * notary: documents / writes down the protocoll
+  * author: one of the people who created the unit
+  * manager: the boss who assigned the review task to the team (shouldn't participate initially)
+
+method:
+
+* **initiation**: team is formed, members are assigned
+* **preparation**: Reviewers read the doc and check it w.r.t. the tasks / points they were assigned
+* **review session**: reviewers present their findings, discuss, weigh and protocol them.
+* **result**: list of problems, errors and suggestions
+* **3rd round**: Reviewers and author talk and discuss without a protocols. 
+* **nacharbeit**: 
+
+rules:
+
+
+###### Structured Walkthrough
+
+* cheaper version of the **technical review**
+* author = moderator
+* author presents their document stepwise
+* reviewers ask prepared or spontaneous questions to discover problems
+* problems are documented / protocoled 
+
+typical for reviewing program code, albeit lower efficiency compared to the technical review.
+
+###### Design & Code Inpsection
+
+The "noble" variant of the technical review with more formalities, but otherwise the same thing.
+
+
+
+
+
 

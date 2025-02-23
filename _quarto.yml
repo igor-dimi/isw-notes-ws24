@@ -29,7 +29,8 @@ format:
     toc-depth: 5
   pdf:
     documentclass: scrreprt
-    number-depth: 2
+    number-depth: 4
+    toc-depth: 4
 
 
 
