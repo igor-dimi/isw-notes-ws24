@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.7.6">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Software Engineering Lecture Notes WS 24/25 - 6&nbsp; Quality Assurance</title>
+<title>6&nbsp; Quality Assurance – Software Engineering Lecture Notes WS 24/25 </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,17 +37,23 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6c21014d9765ba549c6ebad95917e4d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-713f883f12444255370e25cd4e90f6b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,14 +62,42 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -73,13 +107,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../05/05.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality Assurance</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../05/05.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality Assurance</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -88,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Software Engineering Lecture Notes WS 24/25</a> 
@@ -158,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -187,8 +221,29 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#grey-box-testing-white-box-black-box" id="toc-grey-box-testing-white-box-black-box" class="nav-link" data-scroll-target="#grey-box-testing-white-box-black-box">Grey-box Testing: White-box + Black-Box</a></li>
   <li><a href="#class-object-test" id="toc-class-object-test" class="nav-link" data-scroll-target="#class-object-test">Class / Object Test</a></li>
-  <li><a href="#system-test" id="toc-system-test" class="nav-link" data-scroll-target="#system-test">System Test</a></li>
-  <li><a href="#integration-test" id="toc-integration-test" class="nav-link" data-scroll-target="#integration-test">Integration Test</a></li>
+  <li><a href="#system-test" id="toc-system-test" class="nav-link" data-scroll-target="#system-test">System Test</a>
+  <ul>
+  <li><a href="#black-box-test-case-specifications-for-system-tests" id="toc-black-box-test-case-specifications-for-system-tests" class="nav-link" data-scroll-target="#black-box-test-case-specifications-for-system-tests">Black-box test case specifications for system tests:</a></li>
+  </ul></li>
+  <li><a href="#integration-test" id="toc-integration-test" class="nav-link" data-scroll-target="#integration-test">Integration Test</a>
+  <ul>
+  <li><a href="#how-are-components-interrelated" id="toc-how-are-components-interrelated" class="nav-link" data-scroll-target="#how-are-components-interrelated">How are components interrelated ?</a></li>
+  <li><a href="#possible-problems-when-components-are-integrated" id="toc-possible-problems-when-components-are-integrated" class="nav-link" data-scroll-target="#possible-problems-when-components-are-integrated">Possible problems when components are integrated</a></li>
+  <li><a href="#coverage-in-integration-tests" id="toc-coverage-in-integration-tests" class="nav-link" data-scroll-target="#coverage-in-integration-tests">Coverage in Integration Tests</a></li>
+  <li><a href="#integration-testing-specific-to-oo" id="toc-integration-testing-specific-to-oo" class="nav-link" data-scroll-target="#integration-testing-specific-to-oo">Integration testing specific to OO</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#static-testing" id="toc-static-testing" class="nav-link" data-scroll-target="#static-testing">Static Testing</a>
+  <ul>
+  <li><a href="#static-analysis" id="toc-static-analysis" class="nav-link" data-scroll-target="#static-analysis">Static Analysis</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a>
+  <ul>
+  <li><a href="#oo-metrics" id="toc-oo-metrics" class="nav-link" data-scroll-target="#oo-metrics">OO Metrics</a></li>
+  </ul></li>
+  <li><a href="#inspection" id="toc-inspection" class="nav-link" data-scroll-target="#inspection">Inspection</a>
+  <ul>
+  <li><a href="#inspection-methods" id="toc-inspection-methods" class="nav-link" data-scroll-target="#inspection-methods">Inspection Methods</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -211,7 +266,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Quality: Software satisfies the requirements</p>
 <p>topics:</p>
@@ -473,7 +530,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./imgs/bin-search-code-coverage-control-flow.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">control-flow graph example</figcaption>
+<figcaption>control-flow graph example</figcaption>
 </figure>
 </div>
 <p>Rules:</p>
@@ -550,11 +607,295 @@ Note
 </section>
 <section id="system-test" class="level4">
 <h4 class="anchored" data-anchor-id="system-test">System Test</h4>
+<p>System test:</p>
+<ul>
+<li>Test weather <strong>client requirements</strong> are correctly implemented <span class="math inline">\(\Rightarrow\)</span> <strong>verification</strong>.</li>
+<li>Test environment should be as close to <strong>production environment</strong> as possible, but the production environment itself is not usually completely appropriate because lack or control and risk of damage.</li>
+<li>Both individual SF’s as well as <strong>seqences of SFs</strong> (Use Cases) can be tested.</li>
+<li>quality features should be tested (performance, security etc)</li>
+</ul>
+<section id="black-box-test-case-specifications-for-system-tests" class="level5">
+<h5 class="anchored" data-anchor-id="black-box-test-case-specifications-for-system-tests">Black-box test case specifications for system tests:</h5>
+<ul>
+<li><strong>name</strong></li>
+<li><strong>tested system function</strong></li>
+<li><strong>type</strong>: systemtest</li>
+<li><strong>precondition system</strong>: precondition on the data</li>
+<li><strong>precondition GUI</strong>: what is shown on the GUI? <span class="math inline">\(\Leftarrow\)</span> new</li>
+<li><strong>test steps</strong>: actions that need to be taken on the GUI for data input and calling the SF.</li>
+<li><strong>expected exceptions</strong>: problems that can occur during the exeuction of the test <span class="math inline">\(\Rightarrow\)</span> Error message / error dialogue, or unavailability of SFs</li>
+<li><strong>postcondition system</strong>: postcondition on the data</li>
+<li><strong>postcondition GUI</strong>: What is the state of the GUI after successful execution?</li>
+</ul>
+</section>
 </section>
 <section id="integration-test" class="level4">
 <h4 class="anchored" data-anchor-id="integration-test">Integration Test</h4>
+<ul>
+<li>test the interoperability of components</li>
+<li>assumes that components are correct (tested)</li>
+<li>test against an technical specification (design)</li>
+<li>components are integrated incrementally, step-by-step.</li>
+<li>requires <strong>monitors</strong>: units that observe interfaces between components.</li>
+<li>requires <strong>stubs / drivers</strong> that temporarily stand for not yet tested components</li>
+</ul>
+<section id="how-are-components-interrelated" class="level5">
+<h5 class="anchored" data-anchor-id="how-are-components-interrelated">How are components interrelated ?</h5>
+<ul>
+<li><strong>communication</strong>: a component calls a method of another</li>
+<li><strong>shared data</strong>: components access shared resrouces (variables, data, database), or use same data as a communication medium (asynchronously).</li>
+<li><strong>shared system resources</strong>: cpu, memory, hard disk.</li>
+</ul>
+</section>
+<section id="possible-problems-when-components-are-integrated" class="level5">
+<h5 class="anchored" data-anchor-id="possible-problems-when-components-are-integrated">Possible problems when components are integrated</h5>
+<ul>
+<li>Wrong receiver of a message</li>
+<li>Wrong service / operation (operation is missing or incompletely implemented)</li>
+<li>Wrong call time (preconditions of the receiver are not met)</li>
+<li>Violation of message / calls sequences</li>
+<li>Mistakes in data passing:
+<ul>
+<li>passed data is syntactically incorrect</li>
+<li>passed data is interpreted incorrectly</li>
+</ul></li>
+<li>Incorrect memory management (allocation / deallocation)</li>
+<li>Mistakes in OS / Middleware (Database, ORB) calls</li>
+<li>Configuration and version inconsistencies</li>
+<li>Divergent / conflicting interpretations of requirements by different teams (especially in distributed development)</li>
+<li>Incorrect usage of an interface.</li>
+<li>Synchronization in real-time systems.</li>
+</ul>
+</section>
+<section id="coverage-in-integration-tests" class="level5">
+<h5 class="anchored" data-anchor-id="coverage-in-integration-tests">Coverage in Integration Tests</h5>
+<ul>
+<li>Integration test should test the interoperability between <strong>all</strong> components.
+<ul>
+<li>which order, which components first?</li>
+<li>difficult to achieve this systematically, because of various complex and circular interdependencies.</li>
+</ul></li>
+<li><span class="math inline">\(\Rightarrow\)</span> Choice of an <strong>Integration Strategy</strong>:
+<ul>
+<li>Top-to-bottom <span class="math inline">\(\Rightarrow\)</span> use <strong>stubs</strong> incrementally</li>
+<li>Bottom-up <span class="math inline">\(\Rightarrow\)</span> use <strong>test drivers</strong> incrementally</li>
+</ul></li>
+</ul>
+</section>
+<section id="integration-testing-specific-to-oo" class="level5">
+<h5 class="anchored" data-anchor-id="integration-testing-specific-to-oo">Integration testing specific to OO</h5>
+<ul>
+<li>test initially individual classes</li>
+<li>subsequently test interdependent classes: due to lack of a strict hierarchy, top-bottom / bottom-up not perfectly applicable <span class="math inline">\(\Rightarrow\)</span> scenario-based tests instead.</li>
+</ul>
+<p>How are objects / classes interdependent?</p>
+<ul>
+<li>communication:
+<ul>
+<li>operation calls</li>
+<li>using attributes of the other class</li>
+<li>objects / references to objects as input parameters to operations</li>
+</ul></li>
+<li>shared data: global variables</li>
+<li>shared (system) resources:
+<ul>
+<li>composition / aggregation (initialization dependencies)</li>
+<li>shared namespace</li>
+</ul></li>
+<li>inheritance:</li>
+</ul>
+<p>Common OO errors:</p>
+<ul>
+<li>operation is not available (configuration problems)</li>
+<li>incorrect object / operation called (during runtime binding)</li>
+<li>crash / deadlock due to usage of shared resources (process, interface)</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="static-testing" class="level3">
+<h3 class="anchored" data-anchor-id="static-testing">Static Testing</h3>
+<p>again,</p>
+<ul>
+<li>Software quality:
+<ul>
+<li>organisational
+<ul>
+<li>…</li>
+</ul></li>
+<li>constructive:
+<ul>
+<li>…</li>
+</ul></li>
+<li>analytical:
+<ul>
+<li><strong>static analysis</strong>: computers</li>
+<li><strong>inspection</strong>: humans</li>
+<li>dynamic testing</li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="static-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="static-analysis">Static Analysis</h4>
+<p>static analysis:</p>
+<ul>
+<li>compilers</li>
+<li>analyzer / linters</li>
+</ul>
+<p>things that can be enforced / checked / discovered:</p>
+<ul>
+<li>syntax errors, as well as
+<ul>
+<li>type checking</li>
+<li>not declared variables</li>
+<li>unreachable (dead) code</li>
+<li>array / field bounds</li>
+<li>consistent usage of interfaces</li>
+</ul></li>
+<li>deviation from conventions / standards</li>
+<li>conspicuous metrics</li>
+<li>control-flow and data-flow anomalies</li>
+</ul>
+</section>
+<section id="metrics" class="level4">
+<h4 class="anchored" data-anchor-id="metrics">Metrics</h4>
+<p>things like:</p>
+<ul>
+<li>documents (including code)
+<ul>
+<li>quality</li>
+<li>volume and scope:
+<ul>
+<li>LOC (lines of code) <span class="math inline">\(\Rightarrow\)</span> complexity and error-proneness</li>
+<li>Fan in / Fan-out:
+<ul>
+<li>Fan in: number of functions that call a function X. high Fan-in <span class="math inline">\(\Rightarrow\)</span> high coupling</li>
+<li>Fan-out: number of functions that are called by X. high <span class="math inline">\(\Rightarrow\)</span> complex control logic</li>
+</ul></li>
+<li>Branching depth: high <span class="math inline">\(\Rightarrow\)</span> difficult to understand, error-prone</li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="oo-metrics" class="level5">
+<h5 class="anchored" data-anchor-id="oo-metrics">OO Metrics</h5>
+<ul>
+<li>Complexity of an operation: number of test cases necessary to achieve branching coverage</li>
+<li>Complexity of a class:
+<ul>
+<li>number of operations (weighted with their respective complexities, see above)</li>
+<li>inheritance depth</li>
+<li>number of operations that overwrite the superclass version</li>
+</ul></li>
+<li>Low cohesion in a class: nu of op pairs that don’t use a common attribute - nu of op pairs that use a common attribute</li>
+<li>coupling: external dependencies: fan-in / out w.r.t to operations</li>
+</ul>
+</section>
+</section>
+<section id="inspection" class="level4">
+<h4 class="anchored" data-anchor-id="inspection">Inspection</h4>
+<p>Manual checking by humans of all sorts of documents (including code):</p>
+<ul>
+<li>necessary, because many documents can be checked by computers like:
+<ul>
+<li>lastenheft</li>
+<li>pflichtenheft</li>
+<li>user manual</li>
+<li>…</li>
+</ul></li>
+</ul>
+<section id="inspection-methods" class="level5">
+<h5 class="anchored" data-anchor-id="inspection-methods">Inspection Methods</h5>
+<p>various methods:</p>
+<ol type="1">
+<li>durchsicht</li>
+<li>stellungnahme</li>
+<li>technical review</li>
+<li>walkhrough</li>
+<li>design &amp; code inspections</li>
+</ol>
+<p>increases in complexity and thoroughness.</p>
+<p>how is a document reviewed:</p>
+<ul>
+<li>reading techniques:
+<ul>
+<li>ad-hoc</li>
+<li>check-list based:
+<ul>
+<li>can be derived from <strong>guidelines</strong></li>
+</ul></li>
+<li>error-class / type based (similar to check-list)</li>
+<li>perspective based (primarily for document other than program code) <span class="math inline">\(\Rightarrow\)</span> good for discovering semantic deficiencies: the reviewer reviews the doc from a specific perspective, and looks for the error regarding that perspective and a scenario
+<ul>
+<li>Perspective:
+<ul>
+<li>client</li>
+<li>developer</li>
+<li>tester</li>
+</ul></li>
+<li>Scenario: use the document in a sepcific way, to achieve a specific task with the goal to discover erros.</li>
+</ul></li>
+</ul></li>
+</ul>
+<section id="durchsicht" class="level6">
+<h6 class="anchored" data-anchor-id="durchsicht">Durchsicht</h6>
+<ul>
+<li>Carried out by one developer <strong>alone</strong>.</li>
+<li>Away from the screen, alone.</li>
+<li>Should be always done by the developer anyways, <strong>not</strong> redundant due to other inspection methods.</li>
+</ul>
+</section>
+<section id="stellungnahme" class="level6">
+<h6 class="anchored" data-anchor-id="stellungnahme">Stellungnahme</h6>
+<ul>
+<li>There is no manager, the author of the unit organizes and leads the review.</li>
+<li>Author is the manager and selects the reviewers.</li>
+<li>document is modified during the review without a protocol.</li>
+</ul>
+</section>
+<section id="technical-review" class="level6">
+<h6 class="anchored" data-anchor-id="technical-review">Technical Review</h6>
+<ul>
+<li><strong>goal</strong>: find errors (<strong>not</strong> correct) and document them</li>
+<li><strong>test subject</strong>: any self-contained unit; method, module, class, document, etc</li>
+<li><strong>required reference documents</strong>: specification, guidelines, question catalogue</li>
+<li><strong>team</strong>: (author does review)
+<ul>
+<li>reviewers (gutachter): get specific tasks and types of errors that they should look out for</li>
+<li>moderator: conducts / manages the review</li>
+<li>notary: documents / writes down the protocoll</li>
+<li>author: one of the people who created the unit</li>
+<li>manager: the boss who assigned the review task to the team (shouldn’t participate initially)</li>
+</ul></li>
+</ul>
+<p>method:</p>
+<ul>
+<li><strong>initiation</strong>: team is formed, members are assigned</li>
+<li><strong>preparation</strong>: Reviewers read the doc and check it w.r.t. the tasks / points they were assigned</li>
+<li><strong>review session</strong>: reviewers present their findings, discuss, weigh and protocol them.</li>
+<li><strong>result</strong>: list of problems, errors and suggestions</li>
+<li><strong>3rd round</strong>: Reviewers and author talk and discuss without a protocols.</li>
+<li><strong>nacharbeit</strong>:</li>
+</ul>
+<p>rules:</p>
+</section>
+<section id="structured-walkthrough" class="level6">
+<h6 class="anchored" data-anchor-id="structured-walkthrough">Structured Walkthrough</h6>
+<ul>
+<li>cheaper version of the <strong>technical review</strong></li>
+<li>author = moderator</li>
+<li>author presents their document stepwise</li>
+<li>reviewers ask prepared or spontaneous questions to discover problems</li>
+<li>problems are documented / protocoled</li>
+</ul>
+<p>typical for reviewing program code, albeit lower efficiency compared to the technical review.</p>
+</section>
+<section id="design-code-inpsection" class="level6">
+<h6 class="anchored" data-anchor-id="design-code-inpsection">Design &amp; Code Inpsection</h6>
+<p>The “noble” variant of the technical review with more formalities, but otherwise the same thing.</p>
 
 
+</section>
+</section>
 </section>
 </section>
 
@@ -594,18 +935,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -637,11 +967,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -651,8 +1018,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -664,7 +1040,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -708,6 +1206,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -733,6 +1232,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -794,17 +1319,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../04/04.html" class="pagination-link">
+      <a href="../04/04.html" class="pagination-link" aria-label="Design">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Design</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../06/06.html" class="pagination-link">
+      <a href="../06/06.html" class="pagination-link" aria-label="Evolution">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evolution</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
