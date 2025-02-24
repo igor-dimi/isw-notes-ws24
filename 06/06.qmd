@@ -9,5 +9,330 @@ topics:
 2. Architecture
 3. Re-use
 4. Further development and change management
-5. DevOps & IT-Governence
+5. DevOps & IT-Governance
 6. Re-engineering
+
+
+### Introduction
+
+Again, core questions of SE:
+
+1. **Quality**: how to ensure that the software fulfills the requirements?
+2. **Users**: How to ensure that software is useful?
+3. **Developers**: How to ensure that software is easy to understand, maintain and modify? $\Leftarrow$ **this**
+4. **Costs / Time**: How to ensure that the product will be ready within that given costs / time constraints? 
+
+core tasks of SE:
+
+1. Development:
+   * determining the context of the software
+   * requirements engineering
+   * architecture
+   * detailed design
+   * implementation
+   * configuration management
+2. Quality Management:
+   * Product: testing, inspection, metrics
+   * Process: measurement, improvement, fine-tuning
+3. **Evolution**
+   * operation
+   * Modification / further development
+   * re-use
+   * re-engineering
+   * change management
+4. Project Management
+   * team
+   * costs
+   * appointments
+   * risks
+   * client / contractor relationship 
+
+**Definition**: all activities that support maintaining, further developing and reusing the product, and take place after the initial
+development phase:
+
+* Software products are continuously developed and modified $\Rightarrow$ **evolution**. 
+* Software isn't developed from 0 (no Greenfield development) 
+* Code should be easy to modify: Design patterns, architecture, reuse
+* Management of software development should and operation be oriented according to evolution:
+  * change management
+  * DevOps and IT-Governance
+* re-engineering: if the initial development of the software was bad, it could be necessary to improve it retrospectively.
+
+### Architecture
+
+**Definition**:
+
+* description of the fundamental organization of a system: components of a system, their relationship to each other and to the environment.
+* description of design principles of a system
+
+
+#### Elements / levels of architectural design:
+
+1. Goals
+2. External systems $\Rightarrow$ conceptual view
+3. Components $\Rightarrow$ components view
+4. Resources $\Rightarrow$ physical view
+5. Processes $\Rightarrow$ runtime / process view
+6. Operational concept $\Rightarrow$ operational view
+
+##### Architectural Design Goals
+
+The architectural structure is defined in order to achieve and concretize certain QRs like:
+  * flexibility: configurability, maintainability, modifiability
+  * operational security: security and reliability (robustness), availability
+  * efficiency
+
+**Example**: Operation security:
+1. firewall
+2. layers
+
+##### External Systems
+
+* Existing application software that neighbor and interact with the system $\Rightarrow$ Conceptional View (Configuration Diagrams)
+* **Conceptional View** $\Rightarrow$  Client, Users
+
+##### Components 
+
+* Components, interfaces, and inner structure: bundling and concretization of analysis classes, static QR (e.g. maintainability)
+* **Component View**: similar to class structure but units are larger and consist of other classes $\Rightarrow$ developers
+
+##### Resources
+
+* resources and the physical distribution of the components over the resources: dynamic QRs (efficiency, reliability, availability)
+* resources: needed hardware and software
+  * hardware: computers (processors), network (communication), screens / terminals (I/O)
+  * software: middleware (database), system software (operating system).
+* **run-time view** $\Rightarrow$ Client, Developer, Programmer
+
+##### Processes
+
+* processes represent the system during runtime, they have to coordinated: dynamic QRs
+* **runtime view** $\Rightarrow$ Integrator, developer
+* examples: 
+  * java threads
+  * batch processes
+  * dialogue processes (reaction to user input)
+
+##### Operational Concept
+
+* description of the edge-cases of system usage:
+  * installing, de-installing
+  * starting the system, shutting the system off
+  * resource failure
+  * component failure
+* **operational view** $\Rightarrow$ client, operator.
+
+#### Tasks of Architectural Design
+
+1. Refining and agreeing on architecture and design goals 
+2. Defining architecture
+3. evaluating the architecture via prototypes & assessment
+4. Iteration and modification of the architecture
+
+#### Modeling Architecture
+
+1. component structure 
+   1. package diagram (purely logical structure of the system, usually code packages)
+   2. composite structure diagram (static): how is a system structure and how are the components interrelated? 
+      $\Rightarrow$ UML component diagram.
+   3. dynamic component diagram: which components are created at runtime and how are they interrelated? 
+2. Physical structure
+   1. distribution diagram $\Rightarrow$ UML distribution diagram
+
+#### Architectural Patterns 
+
+Proven solutions to standard reoccurring architectural problems. 
+
+They are differentiated w.r.t. the view, each view can have it's own solution, (the solutions can and do co-exist):
+
+1. component view:
+   1. Layered Architecture
+   2. MVC
+2. physical view (distribution patterns)
+   1. central system
+   2. client / server: two-tier / three-tier
+3. run-time view (control patterns):
+   * Central control:
+     1. Call-return
+     2. Master-slave
+
+##### Component View Patterns 
+
+###### Layers 
+
+* **problem / goals**: 
+  * simple structure
+  * functions should abstracted / separated from one another
+  * function call only possible in one way
+  * parallel and sequential development of a systems components is possible
+* **solution**: layers and interfaces between layers
+  * each layer provides services to the layers above and use service from the above layers
+* **advantages**: 
+  * design is simplified due to abstraction layers
+  * extensions are possible by introducing new layers
+  * implementation of a layer can be easily substituted with a new one.
+* **shortcomings**:
+  * layered architecture is not always suitable
+  * not easy to decide how to exactly structure layers
+  * too many layers $\Rightarrow$ inefficient.
+* **examples**: communication protocols, databases, operating systems.
+
+###### Model-View-Controller (MVC)
+
+MVC is a variant of the layered architecture:
+
+3 layers:
+
+1. controller: implements the business logic, processes the user input and the data
+2. view: presents the data to the user (gets the data from the model as an observer)
+3. model: contains the data
+
+##### Physical Layer (Distribution View Patterns)
+
+###### Central System
+
+* **problem / goals**: 
+  * business logic and data should at a central location
+  * only authorized parties should have access
+  * all non-trivial processes happen at the central location
+* **solution**: central system and terminals accessing it
+* **examples**: classical mainframe applications, local pc applications
+
+###### Client/Server 
+
+Similar to central system, but some of the processing is done by the clients.
+
+* **problems / goals**: 
+  * data should be central
+  * not all business logic is central, some of it relegated to the so-called clients.
+* **solution**: two-tier client/server architecture
+  * client (front-end): short-lived process for a task
+  * server (back-end): long-lived, persistent process (always runs on the background)
+
+##### Runtime View (Control Patterns)
+
+###### Central Control - Call Return Pattern
+
+* **problem / goals**: 
+  * we want to control the calling of sub-programs
+  * always exactly one sub-program is active
+  * a central main program exists that controls the calls
+* **solution**: 
+  * classic workflow structure of procedural systems
+  * the base is a constantly running main program
+  * main program calls other sub-programs
+  * during the execution of the sub-program the main program is still running (in idle mode)
+  * sub-programs can call other sub-programs
+* **advantage**: simple
+* **shortcomings**: 
+  * low parallelization
+  * exceptions are difficult to handle
+  
+###### Central Control - Master / Slave
+
+* **problem / goals**: 
+  * Central periodic querying of state updates
+  * Reaction to events via a central program
+* **solution**: 
+  * A central infinite loop (**master**) for handling / reacting to events
+  * master checks for events or state updates $\Rightarrow$ carries out corresponding activities as a reaction
+* **advantage**: gut for constructing real-time systems
+
+
+### Reuse
+
+Using existing software in new environments, e.g. Class library
+
+* **goals**: 
+  * quality assurance: reused part is already tested
+  * reducing expenses
+* **problems**:
+  * psychology: Not Invented Here
+  * adaption costs (direct reuse is rarely possible)
+* **methods for reuse**:
+  * procedures $\Rightarrow$ information hiding modules $\Rightarrow$ OOP / inheritance $\Rightarrow$  program generators
+    $\Rightarrow$ frameworks $\Rightarrow$ patterns $\Rightarrow$ components $\Rightarrow$ product lines $\Rightarrow$ 
+    model driven architecture, service oriented architecture, microservices 
+
+#### Frameworks
+
+a collection of classes that represent an abstract solution to a family of problems
+
+* **goals**: reuse of code, **architecture** and **design principles**. 
+* reuse of behavioral pattern of a collection of classes
+* homogenous behavior of systems and implementations that use this framework to solve a family of problems
+* don't call us, we call you: classes, their interrelationships, overall system structure and behavior is predefined 
+  $\Rightarrow$ adjustment in subclasses. 
+* **advantages**: 
+    * passing on expert knowledge
+    * predefined and well-thought-out design saves effort
+    * maintenance effort is reduced
+    * well suitable for systematic testing
+    * facilitates integration and consistency of related requirements (that lead to the development of the framework in the first place)
+  * **difficulties / shortcomings**:
+    * creating frameworks is difficult
+    * understanding / getting accustomed with frameworks takes effort $\Rightarrow$ extra documentation
+    * combining various frameworks is difficult. 
+  
+#### Components (Component-Ware)
+
+The ideal form of software development is the construction of software from predefined building blocks.
+
+* Components $\Rightarrow$ **generic building blocks**:
+  * adaptable
+  * composable
+* simple compositional mechanisms
+  * tools
+  * graphical tools 
+* infrastructure for component interaction: "object bus"
+* examples:
+  * JavaBeans,
+  * CORBA
+  * Microsoft COM+
+  * Web Services
+
+Features of components:
+
+* interfaces: explicitly defined interacction with other components and the environment
+  * client components, server components
+* context dependencies: 
+  * required component infrastructure
+  * system resources
+* independent deployment: components are self-contained
+* composition by third parties: 
+
+Shortcomings:
+
+* components are interoperable but only within the same technology, interoperability among different technologies is not possible
+* often components are developed specific to a project,, thus the components become not reusable, only the infrastructure
+
+#### Service Oriented Architecture (SOA)
+
+Architecture consists of reusable, loosely coupled and fully interoperable business services:
+
+* **reusable**: interface and implementation are separate
+* **loosely coupled**: services are dynamically looked up and bound over a common enterprise infrastructure (enterprise service bus)
+* **fully interoperable**: open standards, security, synchronous communication over a restful API (stateless)
+* **flexible**: Business processes can be flexibly composed
+* describes methods how applications are developed based on such an architecture.
+
+#### Microservices
+
+Similar to SOA, but not for the whole enterprise, rather on the level of individual applications. There is no shared infrastructure.
+
+#### Cloud
+
+* IaaS (Infrastructure as a Service): Hardware is provided on the cloud
+* PaaS (Platform as a Service): Programming / Development on the cloud
+* SaaS (Software as a Service): Software on the cloud
+
+#### Product Lines
+
+Common features and core assets shared over an iteration of products that target a similar market, and have similar goals.
+
+### Change Management and Further Development 
+
+
+
+
+    

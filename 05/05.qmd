@@ -399,13 +399,19 @@ again,
 
 * Software quality:
   * organisational
-    * ...
+    * programming language
+    * configuration management
+    * pair programming
+    * bug / error management
   * constructive: 
-    * ...
+    * guidelines / templates
+    * tools
+    * methods / notation
+    * training
   * analytical:
     * **static analysis**: computers
     * **inspection**: humans
-    * dynamic testing
+    * dynamic testing: execution using computers
 
 
 #### Static Analysis
@@ -534,12 +540,55 @@ rules:
 
 typical for reviewing program code, albeit lower efficiency compared to the technical review.
 
-###### Design & Code Inpsection
+###### Design & Code Inspection
 
 The "noble" variant of the technical review with more formalities, but otherwise the same thing.
 
+### Analytical Quality Assurance at Large 
+
+Methods from testing units can be applied to large systems as well:
+
+* static analysis
+* reviews
+* dynamic tests
+
+but with more planning and larger documents.
+
+#### Method of Analytical QA
+
+method:
+
+1. panning $\Rightarrow$ resources, who carries out the activities?
+   * **goal**: determine a testing strategy $\Rightarrow$ 
+      methods, expends w.r.t. costs / risks
+2. test specification $\Rightarrow$ what, how, which methods? 
+3. test protocol, documentation of results $\Rightarrow
+4. QA evaluation $\Rightarrow$ what is the state of the test object, does it satisfy the quality requirements, what should be done?
+   * uses metrics: coverage, error discovery rate
+5. QA management $\Rightarrow$ stability $\Rightarrow$ usually associated with continuous build. 
+
+software costs categories:
+
+1. net production costs
+2. **quality costs**
+   * error prevention costs (QA)
+   * testing and correction costs (QA)
+   * error costs
+      * error searching costs (during development)
+      * troubleshooting costs (during development)
+      * subsequent costs of error in practice (in the field)
+   * reduction in usage of the product
+3. maintenance costs
+
+**goal**: reduce total costs
 
 
+#### Principles of Analytical QA
 
-
-
+1. Complete testing is not possible
+2. program testing ca be used to show presence of bugs, but not their absence
+3. Testing is not a late phase in software development, it should be done as early as possible $\Rightarrow$ reduces costs
+4. Errors / bugs are not distributed evenly in the system rather often occur in clusters. Presence of bugs $\Rightarrow$ other bugs
+   in close proximity
+5. repeating same tests doesn't bring anything new
+6. Bug-free system doesn't mean that the system fulfills users expections $\Rightarrow$ Validation vs **Verification**. 
