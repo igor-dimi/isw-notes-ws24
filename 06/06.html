@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.6">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Evolution – Software Engineering Lecture Notes WS 24/25 </title>
+<title>Software Engineering Lecture Notes WS 24/25 - 7&nbsp; Evolution</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,23 +37,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6c21014d9765ba549c6ebad95917e4d7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-713f883f12444255370e25cd4e90f6b2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -62,13 +56,14 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -78,13 +73,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06/06.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evolution</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../06/06.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evolution</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -93,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Software Engineering Lecture Notes WS 24/25</a> 
@@ -163,10 +158,46 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
+  <ul>
+  <li><a href="#elements-levels-of-architectural-design" id="toc-elements-levels-of-architectural-design" class="nav-link" data-scroll-target="#elements-levels-of-architectural-design">Elements / levels of architectural design:</a>
+  <ul>
+  <li><a href="#architectural-design-goals" id="toc-architectural-design-goals" class="nav-link" data-scroll-target="#architectural-design-goals">Architectural Design Goals</a></li>
+  <li><a href="#external-systems" id="toc-external-systems" class="nav-link" data-scroll-target="#external-systems">External Systems</a></li>
+  <li><a href="#components" id="toc-components" class="nav-link" data-scroll-target="#components">Components</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#processes" id="toc-processes" class="nav-link" data-scroll-target="#processes">Processes</a></li>
+  <li><a href="#operational-concept" id="toc-operational-concept" class="nav-link" data-scroll-target="#operational-concept">Operational Concept</a></li>
+  </ul></li>
+  <li><a href="#tasks-of-architectural-design" id="toc-tasks-of-architectural-design" class="nav-link" data-scroll-target="#tasks-of-architectural-design">Tasks of Architectural Design</a></li>
+  <li><a href="#modeling-architecture" id="toc-modeling-architecture" class="nav-link" data-scroll-target="#modeling-architecture">Modeling Architecture</a></li>
+  <li><a href="#architectural-patterns" id="toc-architectural-patterns" class="nav-link" data-scroll-target="#architectural-patterns">Architectural Patterns</a>
+  <ul>
+  <li><a href="#component-view-patterns" id="toc-component-view-patterns" class="nav-link" data-scroll-target="#component-view-patterns">Component View Patterns</a></li>
+  <li><a href="#physical-layer-distribution-view-patterns" id="toc-physical-layer-distribution-view-patterns" class="nav-link" data-scroll-target="#physical-layer-distribution-view-patterns">Physical Layer (Distribution View Patterns)</a></li>
+  <li><a href="#runtime-view-control-patterns" id="toc-runtime-view-control-patterns" class="nav-link" data-scroll-target="#runtime-view-control-patterns">Runtime View (Control Patterns)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#reuse" id="toc-reuse" class="nav-link" data-scroll-target="#reuse">Reuse</a>
+  <ul>
+  <li><a href="#frameworks" id="toc-frameworks" class="nav-link" data-scroll-target="#frameworks">Frameworks</a></li>
+  <li><a href="#components-component-ware" id="toc-components-component-ware" class="nav-link" data-scroll-target="#components-component-ware">Components (Component-Ware)</a></li>
+  <li><a href="#service-oriented-architecture-soa" id="toc-service-oriented-architecture-soa" class="nav-link" data-scroll-target="#service-oriented-architecture-soa">Service Oriented Architecture (SOA)</a></li>
+  <li><a href="#microservices" id="toc-microservices" class="nav-link" data-scroll-target="#microservices">Microservices</a></li>
+  <li><a href="#cloud" id="toc-cloud" class="nav-link" data-scroll-target="#cloud">Cloud</a></li>
+  <li><a href="#product-lines" id="toc-product-lines" class="nav-link" data-scroll-target="#product-lines">Product Lines</a></li>
+  </ul></li>
+  <li><a href="#change-management-and-further-development" id="toc-change-management-and-further-development" class="nav-link" data-scroll-target="#change-management-and-further-development">Change Management and Further Development</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -186,9 +217,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
-
 
 <p>All activities that facilitate re-use and further development. (All activities that take place after the initial development phase)</p>
 <p>topics:</p>
@@ -197,11 +226,426 @@ ul.task-list li input[type="checkbox"] {
 <li>Architecture</li>
 <li>Re-use</li>
 <li>Further development and change management</li>
-<li>DevOps &amp; IT-Governence</li>
+<li>DevOps &amp; IT-Governance</li>
 <li>Re-engineering</li>
 </ol>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>Again, core questions of SE:</p>
+<ol type="1">
+<li><strong>Quality</strong>: how to ensure that the software fulfills the requirements?</li>
+<li><strong>Users</strong>: How to ensure that software is useful?</li>
+<li><strong>Developers</strong>: How to ensure that software is easy to understand, maintain and modify? <span class="math inline">\(\Leftarrow\)</span> <strong>this</strong></li>
+<li><strong>Costs / Time</strong>: How to ensure that the product will be ready within that given costs / time constraints?</li>
+</ol>
+<p>core tasks of SE:</p>
+<ol type="1">
+<li>Development:
+<ul>
+<li>determining the context of the software</li>
+<li>requirements engineering</li>
+<li>architecture</li>
+<li>detailed design</li>
+<li>implementation</li>
+<li>configuration management</li>
+</ul></li>
+<li>Quality Management:
+<ul>
+<li>Product: testing, inspection, metrics</li>
+<li>Process: measurement, improvement, fine-tuning</li>
+</ul></li>
+<li><strong>Evolution</strong>
+<ul>
+<li>operation</li>
+<li>Modification / further development</li>
+<li>re-use</li>
+<li>re-engineering</li>
+<li>change management</li>
+</ul></li>
+<li>Project Management
+<ul>
+<li>team</li>
+<li>costs</li>
+<li>appointments</li>
+<li>risks</li>
+<li>client / contractor relationship</li>
+</ul></li>
+</ol>
+<p><strong>Definition</strong>: all activities that support maintaining, further developing and reusing the product, and take place after the initial development phase:</p>
+<ul>
+<li>Software products are continuously developed and modified <span class="math inline">\(\Rightarrow\)</span> <strong>evolution</strong>.</li>
+<li>Software isn’t developed from 0 (no Greenfield development)</li>
+<li>Code should be easy to modify: Design patterns, architecture, reuse</li>
+<li>Management of software development should and operation be oriented according to evolution:
+<ul>
+<li>change management</li>
+<li>DevOps and IT-Governance</li>
+</ul></li>
+<li>re-engineering: if the initial development of the software was bad, it could be necessary to improve it retrospectively.</li>
+</ul>
+</section>
+<section id="architecture" class="level3">
+<h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
+<p><strong>Definition</strong>:</p>
+<ul>
+<li>description of the fundamental organization of a system: components of a system, their relationship to each other and to the environment.</li>
+<li>description of design principles of a system</li>
+</ul>
+<section id="elements-levels-of-architectural-design" class="level4">
+<h4 class="anchored" data-anchor-id="elements-levels-of-architectural-design">Elements / levels of architectural design:</h4>
+<ol type="1">
+<li>Goals</li>
+<li>External systems <span class="math inline">\(\Rightarrow\)</span> conceptual view</li>
+<li>Components <span class="math inline">\(\Rightarrow\)</span> components view</li>
+<li>Resources <span class="math inline">\(\Rightarrow\)</span> physical view</li>
+<li>Processes <span class="math inline">\(\Rightarrow\)</span> runtime / process view</li>
+<li>Operational concept <span class="math inline">\(\Rightarrow\)</span> operational view</li>
+</ol>
+<section id="architectural-design-goals" class="level5">
+<h5 class="anchored" data-anchor-id="architectural-design-goals">Architectural Design Goals</h5>
+<p>The architectural structure is defined in order to achieve and concretize certain QRs like: * flexibility: configurability, maintainability, modifiability * operational security: security and reliability (robustness), availability * efficiency</p>
+<p><strong>Example</strong>: Operation security: 1. firewall 2. layers</p>
+</section>
+<section id="external-systems" class="level5">
+<h5 class="anchored" data-anchor-id="external-systems">External Systems</h5>
+<ul>
+<li>Existing application software that neighbor and interact with the system <span class="math inline">\(\Rightarrow\)</span> Conceptional View (Configuration Diagrams)</li>
+<li><strong>Conceptional View</strong> <span class="math inline">\(\Rightarrow\)</span> Client, Users</li>
+</ul>
+</section>
+<section id="components" class="level5">
+<h5 class="anchored" data-anchor-id="components">Components</h5>
+<ul>
+<li>Components, interfaces, and inner structure: bundling and concretization of analysis classes, static QR (e.g.&nbsp;maintainability)</li>
+<li><strong>Component View</strong>: similar to class structure but units are larger and consist of other classes <span class="math inline">\(\Rightarrow\)</span> developers</li>
+</ul>
+</section>
+<section id="resources" class="level5">
+<h5 class="anchored" data-anchor-id="resources">Resources</h5>
+<ul>
+<li>resources and the physical distribution of the components over the resources: dynamic QRs (efficiency, reliability, availability)</li>
+<li>resources: needed hardware and software
+<ul>
+<li>hardware: computers (processors), network (communication), screens / terminals (I/O)</li>
+<li>software: middleware (database), system software (operating system).</li>
+</ul></li>
+<li><strong>run-time view</strong> <span class="math inline">\(\Rightarrow\)</span> Client, Developer, Programmer</li>
+</ul>
+</section>
+<section id="processes" class="level5">
+<h5 class="anchored" data-anchor-id="processes">Processes</h5>
+<ul>
+<li>processes represent the system during runtime, they have to coordinated: dynamic QRs</li>
+<li><strong>runtime view</strong> <span class="math inline">\(\Rightarrow\)</span> Integrator, developer</li>
+<li>examples:
+<ul>
+<li>java threads</li>
+<li>batch processes</li>
+<li>dialogue processes (reaction to user input)</li>
+</ul></li>
+</ul>
+</section>
+<section id="operational-concept" class="level5">
+<h5 class="anchored" data-anchor-id="operational-concept">Operational Concept</h5>
+<ul>
+<li>description of the edge-cases of system usage:
+<ul>
+<li>installing, de-installing</li>
+<li>starting the system, shutting the system off</li>
+<li>resource failure</li>
+<li>component failure</li>
+</ul></li>
+<li><strong>operational view</strong> <span class="math inline">\(\Rightarrow\)</span> client, operator.</li>
+</ul>
+</section>
+</section>
+<section id="tasks-of-architectural-design" class="level4">
+<h4 class="anchored" data-anchor-id="tasks-of-architectural-design">Tasks of Architectural Design</h4>
+<ol type="1">
+<li>Refining and agreeing on architecture and design goals</li>
+<li>Defining architecture</li>
+<li>evaluating the architecture via prototypes &amp; assessment</li>
+<li>Iteration and modification of the architecture</li>
+</ol>
+</section>
+<section id="modeling-architecture" class="level4">
+<h4 class="anchored" data-anchor-id="modeling-architecture">Modeling Architecture</h4>
+<ol type="1">
+<li>component structure
+<ol type="1">
+<li>package diagram (purely logical structure of the system, usually code packages)</li>
+<li>composite structure diagram (static): how is a system structure and how are the components interrelated? <span class="math inline">\(\Rightarrow\)</span> UML component diagram.</li>
+<li>dynamic component diagram: which components are created at runtime and how are they interrelated?</li>
+</ol></li>
+<li>Physical structure
+<ol type="1">
+<li>distribution diagram <span class="math inline">\(\Rightarrow\)</span> UML distribution diagram</li>
+</ol></li>
+</ol>
+</section>
+<section id="architectural-patterns" class="level4">
+<h4 class="anchored" data-anchor-id="architectural-patterns">Architectural Patterns</h4>
+<p>Proven solutions to standard reoccurring architectural problems.</p>
+<p>They are differentiated w.r.t. the view, each view can have it’s own solution, (the solutions can and do co-exist):</p>
+<ol type="1">
+<li>component view:
+<ol type="1">
+<li>Layered Architecture</li>
+<li>MVC</li>
+</ol></li>
+<li>physical view (distribution patterns)
+<ol type="1">
+<li>central system</li>
+<li>client / server: two-tier / three-tier</li>
+</ol></li>
+<li>run-time view (control patterns):
+<ul>
+<li>Central control:
+<ol type="1">
+<li>Call-return</li>
+<li>Master-slave</li>
+</ol></li>
+</ul></li>
+</ol>
+<section id="component-view-patterns" class="level5">
+<h5 class="anchored" data-anchor-id="component-view-patterns">Component View Patterns</h5>
+<section id="layers" class="level6">
+<h6 class="anchored" data-anchor-id="layers">Layers</h6>
+<ul>
+<li><strong>problem / goals</strong>:
+<ul>
+<li>simple structure</li>
+<li>functions should abstracted / separated from one another</li>
+<li>function call only possible in one way</li>
+<li>parallel and sequential development of a systems components is possible</li>
+</ul></li>
+<li><strong>solution</strong>: layers and interfaces between layers
+<ul>
+<li>each layer provides services to the layers above and use service from the above layers</li>
+</ul></li>
+<li><strong>advantages</strong>:
+<ul>
+<li>design is simplified due to abstraction layers</li>
+<li>extensions are possible by introducing new layers</li>
+<li>implementation of a layer can be easily substituted with a new one.</li>
+</ul></li>
+<li><strong>shortcomings</strong>:
+<ul>
+<li>layered architecture is not always suitable</li>
+<li>not easy to decide how to exactly structure layers</li>
+<li>too many layers <span class="math inline">\(\Rightarrow\)</span> inefficient.</li>
+</ul></li>
+<li><strong>examples</strong>: communication protocols, databases, operating systems.</li>
+</ul>
+</section>
+<section id="model-view-controller-mvc" class="level6">
+<h6 class="anchored" data-anchor-id="model-view-controller-mvc">Model-View-Controller (MVC)</h6>
+<p>MVC is a variant of the layered architecture:</p>
+<p>3 layers:</p>
+<ol type="1">
+<li>controller: implements the business logic, processes the user input and the data</li>
+<li>view: presents the data to the user (gets the data from the model as an observer)</li>
+<li>model: contains the data</li>
+</ol>
+</section>
+</section>
+<section id="physical-layer-distribution-view-patterns" class="level5">
+<h5 class="anchored" data-anchor-id="physical-layer-distribution-view-patterns">Physical Layer (Distribution View Patterns)</h5>
+<section id="central-system" class="level6">
+<h6 class="anchored" data-anchor-id="central-system">Central System</h6>
+<ul>
+<li><strong>problem / goals</strong>:
+<ul>
+<li>business logic and data should at a central location</li>
+<li>only authorized parties should have access</li>
+<li>all non-trivial processes happen at the central location</li>
+</ul></li>
+<li><strong>solution</strong>: central system and terminals accessing it</li>
+<li><strong>examples</strong>: classical mainframe applications, local pc applications</li>
+</ul>
+</section>
+<section id="clientserver" class="level6">
+<h6 class="anchored" data-anchor-id="clientserver">Client/Server</h6>
+<p>Similar to central system, but some of the processing is done by the clients.</p>
+<ul>
+<li><strong>problems / goals</strong>:
+<ul>
+<li>data should be central</li>
+<li>not all business logic is central, some of it relegated to the so-called clients.</li>
+</ul></li>
+<li><strong>solution</strong>: two-tier client/server architecture
+<ul>
+<li>client (front-end): short-lived process for a task</li>
+<li>server (back-end): long-lived, persistent process (always runs on the background)</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="runtime-view-control-patterns" class="level5">
+<h5 class="anchored" data-anchor-id="runtime-view-control-patterns">Runtime View (Control Patterns)</h5>
+<section id="central-control---call-return-pattern" class="level6">
+<h6 class="anchored" data-anchor-id="central-control---call-return-pattern">Central Control - Call Return Pattern</h6>
+<ul>
+<li><strong>problem / goals</strong>:
+<ul>
+<li>we want to control the calling of sub-programs</li>
+<li>always exactly one sub-program is active</li>
+<li>a central main program exists that controls the calls</li>
+</ul></li>
+<li><strong>solution</strong>:
+<ul>
+<li>classic workflow structure of procedural systems</li>
+<li>the base is a constantly running main program</li>
+<li>main program calls other sub-programs</li>
+<li>during the execution of the sub-program the main program is still running (in idle mode)</li>
+<li>sub-programs can call other sub-programs</li>
+</ul></li>
+<li><strong>advantage</strong>: simple</li>
+<li><strong>shortcomings</strong>:
+<ul>
+<li>low parallelization</li>
+<li>exceptions are difficult to handle</li>
+</ul></li>
+</ul>
+</section>
+<section id="central-control---master-slave" class="level6">
+<h6 class="anchored" data-anchor-id="central-control---master-slave">Central Control - Master / Slave</h6>
+<ul>
+<li><strong>problem / goals</strong>:
+<ul>
+<li>Central periodic querying of state updates</li>
+<li>Reaction to events via a central program</li>
+</ul></li>
+<li><strong>solution</strong>:
+<ul>
+<li>A central infinite loop (<strong>master</strong>) for handling / reacting to events</li>
+<li>master checks for events or state updates <span class="math inline">\(\Rightarrow\)</span> carries out corresponding activities as a reaction</li>
+</ul></li>
+<li><strong>advantage</strong>: gut for constructing real-time systems</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="reuse" class="level3">
+<h3 class="anchored" data-anchor-id="reuse">Reuse</h3>
+<p>Using existing software in new environments, e.g.&nbsp;Class library</p>
+<ul>
+<li><strong>goals</strong>:
+<ul>
+<li>quality assurance: reused part is already tested</li>
+<li>reducing expenses</li>
+</ul></li>
+<li><strong>problems</strong>:
+<ul>
+<li>psychology: Not Invented Here</li>
+<li>adaption costs (direct reuse is rarely possible)</li>
+</ul></li>
+<li><strong>methods for reuse</strong>:
+<ul>
+<li>procedures <span class="math inline">\(\Rightarrow\)</span> information hiding modules <span class="math inline">\(\Rightarrow\)</span> OOP / inheritance <span class="math inline">\(\Rightarrow\)</span> program generators <span class="math inline">\(\Rightarrow\)</span> frameworks <span class="math inline">\(\Rightarrow\)</span> patterns <span class="math inline">\(\Rightarrow\)</span> components <span class="math inline">\(\Rightarrow\)</span> product lines <span class="math inline">\(\Rightarrow\)</span> model driven architecture, service oriented architecture, microservices</li>
+</ul></li>
+</ul>
+<section id="frameworks" class="level4">
+<h4 class="anchored" data-anchor-id="frameworks">Frameworks</h4>
+<p>a collection of classes that represent an abstract solution to a family of problems</p>
+<ul>
+<li><strong>goals</strong>: reuse of code, <strong>architecture</strong> and <strong>design principles</strong>.</li>
+<li>reuse of behavioral pattern of a collection of classes</li>
+<li>homogenous behavior of systems and implementations that use this framework to solve a family of problems</li>
+<li>don’t call us, we call you: classes, their interrelationships, overall system structure and behavior is predefined <span class="math inline">\(\Rightarrow\)</span> adjustment in subclasses.</li>
+<li><strong>advantages</strong>:
+<ul>
+<li>passing on expert knowledge</li>
+<li>predefined and well-thought-out design saves effort</li>
+<li>maintenance effort is reduced</li>
+<li>well suitable for systematic testing</li>
+<li>facilitates integration and consistency of related requirements (that lead to the development of the framework in the first place)</li>
+<li><strong>difficulties / shortcomings</strong>:
+<ul>
+<li>creating frameworks is difficult</li>
+<li>understanding / getting accustomed with frameworks takes effort <span class="math inline">\(\Rightarrow\)</span> extra documentation</li>
+<li>combining various frameworks is difficult.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="components-component-ware" class="level4">
+<h4 class="anchored" data-anchor-id="components-component-ware">Components (Component-Ware)</h4>
+<p>The ideal form of software development is the construction of software from predefined building blocks.</p>
+<ul>
+<li>Components <span class="math inline">\(\Rightarrow\)</span> <strong>generic building blocks</strong>:
+<ul>
+<li>adaptable</li>
+<li>composable</li>
+</ul></li>
+<li>simple compositional mechanisms
+<ul>
+<li>tools</li>
+<li>graphical tools</li>
+</ul></li>
+<li>infrastructure for component interaction: “object bus”</li>
+<li>examples:
+<ul>
+<li>JavaBeans,</li>
+<li>CORBA</li>
+<li>Microsoft COM+</li>
+<li>Web Services</li>
+</ul></li>
+</ul>
+<p>Features of components:</p>
+<ul>
+<li>interfaces: explicitly defined interacction with other components and the environment
+<ul>
+<li>client components, server components</li>
+</ul></li>
+<li>context dependencies:
+<ul>
+<li>required component infrastructure</li>
+<li>system resources</li>
+</ul></li>
+<li>independent deployment: components are self-contained</li>
+<li>composition by third parties:</li>
+</ul>
+<p>Shortcomings:</p>
+<ul>
+<li>components are interoperable but only within the same technology, interoperability among different technologies is not possible</li>
+<li>often components are developed specific to a project,, thus the components become not reusable, only the infrastructure</li>
+</ul>
+</section>
+<section id="service-oriented-architecture-soa" class="level4">
+<h4 class="anchored" data-anchor-id="service-oriented-architecture-soa">Service Oriented Architecture (SOA)</h4>
+<p>Architecture consists of reusable, loosely coupled and fully interoperable business services:</p>
+<ul>
+<li><strong>reusable</strong>: interface and implementation are separate</li>
+<li><strong>loosely coupled</strong>: services are dynamically looked up and bound over a common enterprise infrastructure (enterprise service bus)</li>
+<li><strong>fully interoperable</strong>: open standards, security, synchronous communication over a restful API (stateless)</li>
+<li><strong>flexible</strong>: Business processes can be flexibly composed</li>
+<li>describes methods how applications are developed based on such an architecture.</li>
+</ul>
+</section>
+<section id="microservices" class="level4">
+<h4 class="anchored" data-anchor-id="microservices">Microservices</h4>
+<p>Similar to SOA, but not for the whole enterprise, rather on the level of individual applications. There is no shared infrastructure.</p>
+</section>
+<section id="cloud" class="level4">
+<h4 class="anchored" data-anchor-id="cloud">Cloud</h4>
+<ul>
+<li>IaaS (Infrastructure as a Service): Hardware is provided on the cloud</li>
+<li>PaaS (Platform as a Service): Programming / Development on the cloud</li>
+<li>SaaS (Software as a Service): Software on the cloud</li>
+</ul>
+</section>
+<section id="product-lines" class="level4">
+<h4 class="anchored" data-anchor-id="product-lines">Product Lines</h4>
+<p>Common features and core assets shared over an iteration of products that target a similar market, and have similar goals.</p>
+</section>
+</section>
+<section id="change-management-and-further-development" class="level3">
+<h3 class="anchored" data-anchor-id="change-management-and-further-development">Change Management and Further Development</h3>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -239,7 +683,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -271,48 +726,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -322,17 +740,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -344,129 +753,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -510,7 +797,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -536,32 +822,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -623,18 +883,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../05/05.html" class="pagination-link" aria-label="Quality Assurance">
+      <a href="../05/05.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quality Assurance</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../07/07.html" class="pagination-link" aria-label="SWE Process &amp; Project Management">
+      <a href="../07/07.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SWE Process &amp; Project Management</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
