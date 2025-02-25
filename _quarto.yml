@@ -27,6 +27,7 @@ format:
   html:
     theme: cosmo
     toc-depth: 5
+    toc-expand: 2
   pdf:
     documentclass: scrreprt
     number-depth: 4

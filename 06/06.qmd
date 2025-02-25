@@ -78,11 +78,13 @@ development phase:
 ##### Architectural Design Goals
 
 The architectural structure is defined in order to achieve and concretize certain QRs like:
-  * flexibility: configurability, maintainability, modifiability
-  * operational security: security and reliability (robustness), availability
-  * efficiency
+
+* flexibility: configurability, maintainability, modifiability
+* operational security: security and reliability (robustness), availability
+* efficiency
 
 **Example**: Operation security:
+
 1. firewall
 2. layers
 
@@ -293,7 +295,7 @@ The ideal form of software development is the construction of software from pred
 
 Features of components:
 
-* interfaces: explicitly defined interacction with other components and the environment
+* interfaces: explicitly defined interaction with other components and the environment
   * client components, server components
 * context dependencies: 
   * required component infrastructure
@@ -330,9 +332,146 @@ Similar to SOA, but not for the whole enterprise, rather on the level of individ
 
 Common features and core assets shared over an iteration of products that target a similar market, and have similar goals.
 
+
 ### Change Management and Further Development 
 
+* Software has to be constantly developed further and maintained.
+* types of changes
+  * corrective
+  * adaptive
+  * improving / preventive
+* methods:
+  * traditional: try to predict the future changes and design software accordingly in advance (very generic, strongly modularized) $\Rightarrow$ difficult, costly
+  * agile: changes are difficult to predict $\Rightarrow$ lay out the **process** s.t. changes are easy to introduce (regression tests, re-factoring)
+  * synthesis (risk management): estimate the costs and risks of serious changes; design the software with that in mind. For the rest use agile. 
+
+Steps of change management:
+
+1. preparation:  Verfolgbarkeit
+2. identification of change requests. Consists of
+   * originator:
+   * affected components:
+   * if the request originates based on an error $\Rightarrow$ reproducability of the error:
+   * description of the problem:
+   * what to do? :
+   * classification of the severity of the problem:
+   * status of the change request:
+3. planing of changes
+4. carrying out changes
+
+Problems related to carrying out changes:
+
+* high pressure for critical changes
+* re-engineering has higher priority
+* missing documentation
+* regression tests are not sufficiently supported
+* introduction of new errors
+* too frequent changes
+* good tools are missing (configuration management)
+
+#### Verfolgbarkeit / Traceability
+
+The ability to track the life of an element and describe it, both forward and backward
+
+various types:
+
+* single level (e.g. traceability between requirements, i.e. only on the level of requirements)
+* over various levels, e.g. requirements $\Rightarrow$ design $\Rightarrow$ code.
+* various versions (evolutionary)
+
+properties:
+
+* important in safety-critical systems. 
+
+### DevOps & IT-Governance 
+
+How to organize this well? $\Rightarrow$ Development and Operations should be considered as closely related activities $\Rightarrow$ DevOps
+
+**IT-Governance**: Operation of Software + Hardware (encompasses DevOps)
+
+#### Software operation
+
+Consists of 
+
+* launch
+* maintenance
+* change / further dev
+
+launch: 
+
+* installation
+* instruction
+* start-up (especially prepping the initial data). Various types:
+  * directly changing to new software
+  * running new software initially parallel with the old: can be compared, higher safety, higher costs
+  * test run (pilot installation, beta-test):
+    * new software with old data, or
+    * stepwise adoption of parts of the new software (incrementally)
+
+#### DevOps 
+
+Above we defined what software operations entail (launch, maintenance, change / further dev). Earlier Development and Operation
+where separate department. Nowadays development and operations are considered together and done by the same department. 
+
+DevOps principles:
+
+* everyone is responsible for all aspects (development and operation)
+* everything that can be automated should be automated: test, launch, support
+* initially measure, then change (DevOps processes and tools)
+
+DevOps automation <=> Code management system <=> DevOps Metrics / Measurements
+
+DevOps automation:
+
+* CI (continuous integration): a change released on master $\Rightarrow$ updated, executable version of the system is generated and tested
+* CDel (continuous delivery): after CI an operating / production environment is simulated and the software is tested there
+* CDep (continuous deployment): after CDel the new version is installed / provided on the users-end
+
+IaC (infrastructure as code): configuration of the system needed for DevOps is in machine readable form (scripts) instead of manual processes.
+$\Rightarrow$ automation. 
+
+DevOps metrics:
+
+* MTTR (mean time to recover)
+* percentage of failed deploymnets
+* deployment frequency
+* amount of customer complaints
+* percentage increase of customers
+* ... 
+
+#### IT-Governance
+
+* IT-Technology (IT): entirety of a firms hardware and software
+* IT-governance: management of IT, ensuring alignment with regulations, principles and goals.
+
+### Re-engineering
+
+Improving the quality of the software without changing the functionality
+
+Steps:
+
+1. reverse engineering: Understanding of a system based on an incomplete documentation
+2. restructuring (refactoring in agile): 
+   transformation of a structure to another one at the same level of abstraction, typically architecture level or design level. 
+3. forward engineering: introducing the changes to the new structure (change management)
+
+#### Reverse Engineering
+
+various models that can be derived with reverse engineering:
+
+* reconstruction: derivation of system architecture
+* re-specification: derivation of requirements from system behavior as a black-box. 
+* re-documentation: extending the documentation, e.g. generating a class diagram from a code-base.
+
+#### Legacy Systems
+
+legacy system: old, large, important software. 
+
+re-engineering is too costly, instead
+
+* wrapping
+* migration: software is replaced incrementally
+* re-development: functionality of the old software developed independently, then the old software is replaced.
 
 
 
-    
