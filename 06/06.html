@@ -92,6 +92,9 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Software Engineering Lecture Notes WS 24/25</a> 
+        <div class="sidebar-tools-main">
+    <a href="../Software-Engineering-Lecture-Notes-WS-24-25-.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -161,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -195,7 +198,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#cloud" id="toc-cloud" class="nav-link" data-scroll-target="#cloud">Cloud</a></li>
   <li><a href="#product-lines" id="toc-product-lines" class="nav-link" data-scroll-target="#product-lines">Product Lines</a></li>
   </ul></li>
-  <li><a href="#change-management-and-further-development" id="toc-change-management-and-further-development" class="nav-link" data-scroll-target="#change-management-and-further-development">Change Management and Further Development</a></li>
+  <li><a href="#change-management-and-further-development" id="toc-change-management-and-further-development" class="nav-link" data-scroll-target="#change-management-and-further-development">Change Management and Further Development</a>
+  <ul>
+  <li><a href="#verfolgbarkeit-traceability" id="toc-verfolgbarkeit-traceability" class="nav-link" data-scroll-target="#verfolgbarkeit-traceability">Verfolgbarkeit / Traceability</a></li>
+  </ul></li>
+  <li><a href="#devops-it-governance" id="toc-devops-it-governance" class="nav-link" data-scroll-target="#devops-it-governance">DevOps &amp; IT-Governance</a>
+  <ul>
+  <li><a href="#software-operation" id="toc-software-operation" class="nav-link" data-scroll-target="#software-operation">Software operation</a></li>
+  <li><a href="#devops" id="toc-devops" class="nav-link" data-scroll-target="#devops">DevOps</a></li>
+  <li><a href="#it-governance" id="toc-it-governance" class="nav-link" data-scroll-target="#it-governance">IT-Governance</a></li>
+  </ul></li>
+  <li><a href="#re-engineering" id="toc-re-engineering" class="nav-link" data-scroll-target="#re-engineering">Re-engineering</a>
+  <ul>
+  <li><a href="#reverse-engineering" id="toc-reverse-engineering" class="nav-link" data-scroll-target="#reverse-engineering">Reverse Engineering</a></li>
+  <li><a href="#legacy-systems" id="toc-legacy-systems" class="nav-link" data-scroll-target="#legacy-systems">Legacy Systems</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -303,8 +320,17 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <section id="architectural-design-goals" class="level5">
 <h5 class="anchored" data-anchor-id="architectural-design-goals">Architectural Design Goals</h5>
-<p>The architectural structure is defined in order to achieve and concretize certain QRs like: * flexibility: configurability, maintainability, modifiability * operational security: security and reliability (robustness), availability * efficiency</p>
-<p><strong>Example</strong>: Operation security: 1. firewall 2. layers</p>
+<p>The architectural structure is defined in order to achieve and concretize certain QRs like:</p>
+<ul>
+<li>flexibility: configurability, maintainability, modifiability</li>
+<li>operational security: security and reliability (robustness), availability</li>
+<li>efficiency</li>
+</ul>
+<p><strong>Example</strong>: Operation security:</p>
+<ol type="1">
+<li>firewall</li>
+<li>layers</li>
+</ol>
 </section>
 <section id="external-systems" class="level5">
 <h5 class="anchored" data-anchor-id="external-systems">External Systems</h5>
@@ -595,7 +621,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Features of components:</p>
 <ul>
-<li>interfaces: explicitly defined interacction with other components and the environment
+<li>interfaces: explicitly defined interaction with other components and the environment
 <ul>
 <li>client components, server components</li>
 </ul></li>
@@ -643,8 +669,155 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="change-management-and-further-development" class="level3">
 <h3 class="anchored" data-anchor-id="change-management-and-further-development">Change Management and Further Development</h3>
+<ul>
+<li>Software has to be constantly developed further and maintained.</li>
+<li>types of changes
+<ul>
+<li>corrective</li>
+<li>adaptive</li>
+<li>improving / preventive</li>
+</ul></li>
+<li>methods:
+<ul>
+<li>traditional: try to predict the future changes and design software accordingly in advance (very generic, strongly modularized) <span class="math inline">\(\Rightarrow\)</span> difficult, costly</li>
+<li>agile: changes are difficult to predict <span class="math inline">\(\Rightarrow\)</span> lay out the <strong>process</strong> s.t. changes are easy to introduce (regression tests, re-factoring)</li>
+<li>synthesis (risk management): estimate the costs and risks of serious changes; design the software with that in mind. For the rest use agile.</li>
+</ul></li>
+</ul>
+<p>Steps of change management:</p>
+<ol type="1">
+<li>preparation: Verfolgbarkeit</li>
+<li>identification of change requests. Consists of
+<ul>
+<li>originator:</li>
+<li>affected components:</li>
+<li>if the request originates based on an error <span class="math inline">\(\Rightarrow\)</span> reproducability of the error:</li>
+<li>description of the problem:</li>
+<li>what to do? :</li>
+<li>classification of the severity of the problem:</li>
+<li>status of the change request:</li>
+</ul></li>
+<li>planing of changes</li>
+<li>carrying out changes</li>
+</ol>
+<p>Problems related to carrying out changes:</p>
+<ul>
+<li>high pressure for critical changes</li>
+<li>re-engineering has higher priority</li>
+<li>missing documentation</li>
+<li>regression tests are not sufficiently supported</li>
+<li>introduction of new errors</li>
+<li>too frequent changes</li>
+<li>good tools are missing (configuration management)</li>
+</ul>
+<section id="verfolgbarkeit-traceability" class="level4">
+<h4 class="anchored" data-anchor-id="verfolgbarkeit-traceability">Verfolgbarkeit / Traceability</h4>
+<p>The ability to track the life of an element and describe it, both forward and backward</p>
+<p>various types:</p>
+<ul>
+<li>single level (e.g.&nbsp;traceability between requirements, i.e.&nbsp;only on the level of requirements)</li>
+<li>over various levels, e.g.&nbsp;requirements <span class="math inline">\(\Rightarrow\)</span> design <span class="math inline">\(\Rightarrow\)</span> code.</li>
+<li>various versions (evolutionary)</li>
+</ul>
+<p>properties:</p>
+<ul>
+<li>important in safety-critical systems.</li>
+</ul>
+</section>
+</section>
+<section id="devops-it-governance" class="level3">
+<h3 class="anchored" data-anchor-id="devops-it-governance">DevOps &amp; IT-Governance</h3>
+<p>How to organize this well? <span class="math inline">\(\Rightarrow\)</span> Development and Operations should be considered as closely related activities <span class="math inline">\(\Rightarrow\)</span> DevOps</p>
+<p><strong>IT-Governance</strong>: Operation of Software + Hardware (encompasses DevOps)</p>
+<section id="software-operation" class="level4">
+<h4 class="anchored" data-anchor-id="software-operation">Software operation</h4>
+<p>Consists of</p>
+<ul>
+<li>launch</li>
+<li>maintenance</li>
+<li>change / further dev</li>
+</ul>
+<p>launch:</p>
+<ul>
+<li>installation</li>
+<li>instruction</li>
+<li>start-up (especially prepping the initial data). Various types:
+<ul>
+<li>directly changing to new software</li>
+<li>running new software initially parallel with the old: can be compared, higher safety, higher costs</li>
+<li>test run (pilot installation, beta-test):
+<ul>
+<li>new software with old data, or</li>
+<li>stepwise adoption of parts of the new software (incrementally)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="devops" class="level4">
+<h4 class="anchored" data-anchor-id="devops">DevOps</h4>
+<p>Above we defined what software operations entail (launch, maintenance, change / further dev). Earlier Development and Operation where separate department. Nowadays development and operations are considered together and done by the same department.</p>
+<p>DevOps principles:</p>
+<ul>
+<li>everyone is responsible for all aspects (development and operation)</li>
+<li>everything that can be automated should be automated: test, launch, support</li>
+<li>initially measure, then change (DevOps processes and tools)</li>
+</ul>
+<p>DevOps automation &lt;=&gt; Code management system &lt;=&gt; DevOps Metrics / Measurements</p>
+<p>DevOps automation:</p>
+<ul>
+<li>CI (continuous integration): a change released on master <span class="math inline">\(\Rightarrow\)</span> updated, executable version of the system is generated and tested</li>
+<li>CDel (continuous delivery): after CI an operating / production environment is simulated and the software is tested there</li>
+<li>CDep (continuous deployment): after CDel the new version is installed / provided on the users-end</li>
+</ul>
+<p>IaC (infrastructure as code): configuration of the system needed for DevOps is in machine readable form (scripts) instead of manual processes. <span class="math inline">\(\Rightarrow\)</span> automation.</p>
+<p>DevOps metrics:</p>
+<ul>
+<li>MTTR (mean time to recover)</li>
+<li>percentage of failed deploymnets</li>
+<li>deployment frequency</li>
+<li>amount of customer complaints</li>
+<li>percentage increase of customers</li>
+<li>…</li>
+</ul>
+</section>
+<section id="it-governance" class="level4">
+<h4 class="anchored" data-anchor-id="it-governance">IT-Governance</h4>
+<ul>
+<li>IT-Technology (IT): entirety of a firms hardware and software</li>
+<li>IT-governance: management of IT, ensuring alignment with regulations, principles and goals.</li>
+</ul>
+</section>
+</section>
+<section id="re-engineering" class="level3">
+<h3 class="anchored" data-anchor-id="re-engineering">Re-engineering</h3>
+<p>Improving the quality of the software without changing the functionality</p>
+<p>Steps:</p>
+<ol type="1">
+<li>reverse engineering: Understanding of a system based on an incomplete documentation</li>
+<li>restructuring (refactoring in agile): transformation of a structure to another one at the same level of abstraction, typically architecture level or design level.</li>
+<li>forward engineering: introducing the changes to the new structure (change management)</li>
+</ol>
+<section id="reverse-engineering" class="level4">
+<h4 class="anchored" data-anchor-id="reverse-engineering">Reverse Engineering</h4>
+<p>various models that can be derived with reverse engineering:</p>
+<ul>
+<li>reconstruction: derivation of system architecture</li>
+<li>re-specification: derivation of requirements from system behavior as a black-box.</li>
+<li>re-documentation: extending the documentation, e.g.&nbsp;generating a class diagram from a code-base.</li>
+</ul>
+</section>
+<section id="legacy-systems" class="level4">
+<h4 class="anchored" data-anchor-id="legacy-systems">Legacy Systems</h4>
+<p>legacy system: old, large, important software.</p>
+<p>re-engineering is too costly, instead</p>
+<ul>
+<li>wrapping</li>
+<li>migration: software is replaced incrementally</li>
+<li>re-development: functionality of the old software developed independently, then the old software is replaced.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

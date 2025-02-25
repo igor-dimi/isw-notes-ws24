@@ -61,6 +61,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -89,6 +91,9 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Software Engineering Lecture Notes WS 24/25</a> 
+        <div class="sidebar-tools-main">
+    <a href="../Software-Engineering-Lecture-Notes-WS-24-25-.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -158,7 +163,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#project-management" id="toc-project-management" class="nav-link" data-scroll-target="#project-management">Project Management</a></li>
+  <li><a href="#swe-process-models-methods" id="toc-swe-process-models-methods" class="nav-link" data-scroll-target="#swe-process-models-methods">SWE-Process models &amp; methods</a>
+  <ul>
+  <li><a href="#process-models" id="toc-process-models" class="nav-link" data-scroll-target="#process-models">Process Models</a>
+  <ul>
+  <li><a href="#waterfall" id="toc-waterfall" class="nav-link" data-scroll-target="#waterfall">Waterfall</a></li>
+  <li><a href="#evolution-iteration-increment" id="toc-evolution-iteration-increment" class="nav-link" data-scroll-target="#evolution-iteration-increment">Evolution / Iteration / Increment</a></li>
+  <li><a href="#spiral-model" id="toc-spiral-model" class="nav-link" data-scroll-target="#spiral-model">Spiral Model</a></li>
+  <li><a href="#v-modell" id="toc-v-modell" class="nav-link" data-scroll-target="#v-modell">V-Modell</a></li>
+  <li><a href="#v-modell-xt" id="toc-v-modell-xt" class="nav-link" data-scroll-target="#v-modell-xt">V-Modell XT</a></li>
+  <li><a href="#xp-an-agile-process" id="toc-xp-an-agile-process" class="nav-link" data-scroll-target="#xp-an-agile-process">XP: An Agile Process</a></li>
+  <li><a href="#scrum-another-agile-process" id="toc-scrum-another-agile-process" class="nav-link" data-scroll-target="#scrum-another-agile-process">Scrum: Another Agile Process</a></li>
+  <li><a href="#new-approaches-continuous-software-engineering" id="toc-new-approaches-continuous-software-engineering" class="nav-link" data-scroll-target="#new-approaches-continuous-software-engineering">New Approaches: Continuous Software Engineering</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -186,8 +212,261 @@ ul.task-list li input[type="checkbox"] {
 <li>Project management</li>
 <li>SWE-process models &amp; methods</li>
 </ol>
+<section id="intro" class="level3">
+<h3 class="anchored" data-anchor-id="intro">Intro</h3>
+<p>Related core question: how ensure that the software system will be successfully developed using given resources (money, humans, technology) within the defined time and cost constraints?</p>
+<ul>
+<li><strong>process</strong>: Abstract specification of the method and it’s structure that will be used to develop the software.</li>
+<li><strong>project</strong>: An instance of such a process</li>
+</ul>
+</section>
+<section id="project-management" class="level3">
+<h3 class="anchored" data-anchor-id="project-management">Project Management</h3>
+<p>The application of knowledge, skills, tools, and techniques to activities contained in a project to achieve the project requirements.</p>
+<p>contents of PM:</p>
+<ul>
+<li>appointments (milestones)</li>
+<li>costs</li>
+<li>risks</li>
+<li>participants:
+<ul>
+<li>team</li>
+<li>client / contractor</li>
+</ul></li>
+<li>functionality</li>
+<li>quality</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imgs/magical-pentagon-PM.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">magical pentagon</figcaption>
+</figure>
+</div>
+<p>magical pentagon:</p>
+<ol type="1">
+<li>project contents / function</li>
+<li>quality / effectivity</li>
+<li>costs / efficiency</li>
+<li>time / risks</li>
+<li>participants</li>
+<li>methods / tools</li>
+</ol>
+<p>Task of project management:</p>
+<ol type="1">
+<li>planning</li>
+<li>organization</li>
+<li>personnel development</li>
+<li>leadership / coordination</li>
+<li>control</li>
+<li>motivate and inform</li>
+</ol>
+<p>phases of project management:</p>
+<ol type="1">
+<li>start / initiate</li>
+<li>plan</li>
+<li>control and execute <span class="math inline">\(\Rightarrow\)</span> feedback control loop</li>
+<li>close</li>
+</ol>
+</section>
+<section id="swe-process-models-methods" class="level3">
+<h3 class="anchored" data-anchor-id="swe-process-models-methods">SWE-Process models &amp; methods</h3>
+<p>For every project there is an underlying process (process model)</p>
+<p>How is process described:</p>
+<ul>
+<li>actors</li>
+<li>activities</li>
+<li>results</li>
+<li>guidelines</li>
+<li>boundary conditions</li>
+</ul>
+<section id="process-models" class="level4">
+<h4 class="anchored" data-anchor-id="process-models">Process Models</h4>
+<p>General paradigms:</p>
+<ul>
+<li>waterfall</li>
+<li>evolutionary / iterative / incremental development</li>
+<li>spiral</li>
+<li>V-model</li>
+<li>agile</li>
+</ul>
+<p>Process models in practice</p>
+<ul>
+<li>V-Model XT</li>
+<li>XP, Scrum (Agile processes)</li>
+</ul>
+<section id="waterfall" class="level5">
+<h5 class="anchored" data-anchor-id="waterfall">Waterfall</h5>
+<p>Waterfall model is Stepwise:</p>
+<ul>
+<li>requirements analysis &lt;=&gt; functional spec &lt;=&gt; design &lt;=&gt; implementation &lt;=&gt; testing</li>
+</ul>
+<p>Evaluation:</p>
+<ul>
+<li>not flexible: dependency on earlier steps</li>
+<li>late testing</li>
+<li>late implementation <span class="math inline">\(\Rightarrow\)</span> late validation / verification</li>
+<li>clear separation of tasks nd steps, low management effort</li>
+</ul>
+</section>
+<section id="evolution-iteration-increment" class="level5">
+<h5 class="anchored" data-anchor-id="evolution-iteration-increment">Evolution / Iteration / Increment</h5>
+<ul>
+<li>early validation of requirements
+<ul>
+<li>rapid prototyping: via a prototype</li>
+<li>evolutionary: prototype gets improved on</li>
+<li>iterative: all of the steps are decomposed in small increments (from requirements to coding)</li>
+<li>incremental: step-wise further development of a core system</li>
+</ul></li>
+</ul>
+<p>Evaluation:</p>
+<ol type="1">
+<li>early QA via a prototype and early deployment (of a prototype)</li>
+<li>early communication with users via prototype / early deployment</li>
+<li>iteration is further development in small steps</li>
+<li>iterations in small steps is good but not easy to determine the iteration steps in advance for large project</li>
+<li>For rapid prototyping and evolutionary methods there is no clear project planning, therefore suitable only for smaller projects.</li>
+</ol>
+</section>
+<section id="spiral-model" class="level5">
+<h5 class="anchored" data-anchor-id="spiral-model">Spiral Model</h5>
+<p>The <strong>Spiral Model</strong> is a <strong>risk-driven</strong> software development and project management approach that combines iterative development with systematic risk analysis. It consists of four key phases:</p>
+<ol type="1">
+<li><strong>Planning</strong> – Define objectives, constraints, and alternatives.<br>
+</li>
+<li><strong>Risk Analysis</strong> – Identify and assess risks, and develop mitigation strategies.<br>
+</li>
+<li><strong>Engineering &amp; Development</strong> – Build, test, and refine prototypes or system components.<br>
+</li>
+<li><strong>Evaluation &amp; Review</strong> – Gather feedback, validate progress, and decide on next iterations.</li>
+</ol>
+<p>This process <strong>repeats in cycles (spirals)</strong>, gradually refining the system with each iteration. It is particularly useful for <strong>complex, high-risk projects</strong> requiring flexibility and continuous stakeholder involvement.</p>
+<p>Evaluation:</p>
+<ul>
+<li>early QA due to risk analysis and testing</li>
+<li>early communication with users via prototypes <span class="math inline">\(\Rightarrow\)</span> early validation / verification</li>
+<li>many documents (danger of having too much documentation)</li>
+<li>high flexibility due to repetitive planning, goal and risk analysis</li>
+<li>high management effor <span class="math inline">\(\Rightarrow\)</span> suitable for large projects</li>
+</ul>
+</section>
+<section id="v-modell" class="level5">
+<h5 class="anchored" data-anchor-id="v-modell">V-Modell</h5>
+<p>A verification and validation-driven development model that expands the Waterfall model into a V-shaped structure. Each development phase (left side) has a corresponding testing phase (right side). It ensures early defect detection and is widely used in safety-critical systems (e.g., aerospace, automotive).</p>
+<p>The phases and their corresponding tests:</p>
+<ol type="1">
+<li>requirements definition &lt;=&gt; acceptance test, system test</li>
+<li>rough design &lt;=&gt; system test, integration test</li>
+<li>detailed design &lt;=&gt; integration test, module test</li>
+<li>module specification &lt;=&gt; module test</li>
+<li>programming (where the two branches meet)</li>
+</ol>
+<p>Evaluation:</p>
+<ol type="1">
+<li>very good QA due to early QA-planning and testing at each phase</li>
+<li>no prototyping, late implementation, no iterations like in waterfall</li>
+<li>early QA planning simplifies QA management aspect of PM</li>
+<li>should be used in conjunction with iterative methods</li>
+</ol>
+</section>
+<section id="v-modell-xt" class="level5">
+<h5 class="anchored" data-anchor-id="v-modell-xt">V-Modell XT</h5>
+<p>A German government standard for system and software development, refining the V-Modell with increased flexibility, modularity, and project tailoring. It emphasizes customization based on project needs and is commonly used in public sector and large-scale projects.</p>
+<p>Evaluation:</p>
+<ul>
+<li>early QA-planning like V-Model and risk-analysis like spiral model</li>
+<li>if agile or incremental methods are applied then early validation with the users is possible</li>
+<li>Very beurocratic and documentation-heavy <span class="math inline">\(\Rightarrow\)</span> suitable only for large projects</li>
+<li>adaptability to different projects is good but high effort</li>
+</ul>
+</section>
+<section id="xp-an-agile-process" class="level5">
+<h5 class="anchored" data-anchor-id="xp-an-agile-process">XP: An Agile Process</h5>
+<p>An agile software development methodology focusing on frequent releases, continuous feedback, and close collaboration. Key practices include</p>
+<ul>
+<li>pair programming,</li>
+<li>test-driven development (TDD),</li>
+<li>continuous integration,</li>
+<li>continuous customer involvement.</li>
+<li>Ideal for projects requiring rapid adaptability and high-quality code.</li>
+</ul>
+<p>Key features:</p>
+<ul>
+<li>on-site customer</li>
+<li>short increments</li>
+<li>planning game <span class="math inline">\(\Rightarrow\)</span> user stories</li>
+<li>simple design</li>
+<li>refactoring</li>
+<li>pair programming</li>
+<li>unit test</li>
+<li>CI/CD</li>
+<li>coding standards</li>
+</ul>
+</section>
+<section id="scrum-another-agile-process" class="level5">
+<h5 class="anchored" data-anchor-id="scrum-another-agile-process">Scrum: Another Agile Process</h5>
+<p>lightweight agile framework for managing complex projects through iterations (<strong>sprints</strong>). It features time-boxed cycles (2–4 weeks), daily stand-ups, backlog management, and defined roles (Scrum Master, Product Owner, Developers). Best suited for dynamic, fast-changing environments.</p>
+<p>process:</p>
+<ul>
+<li>client requirements as story</li>
+<li>analysis</li>
+<li>planning</li>
+<li>implementation / evaluation</li>
+<li>metrics</li>
+</ul>
+<p>in short iterations.</p>
+<p>roles:</p>
+<ul>
+<li>ProductOwner:
+<ul>
+<li>represents client</li>
+<li>defines vision of the software</li>
+<li>creates user stories</li>
+<li>prioritizes requirements in the product backlog</li>
+</ul></li>
+<li>Team: planning and results</li>
+<li>ScrumMaster (not the same as ProjectManager)
+<ul>
+<li>facilitates productive environment for the team</li>
+<li>communication ProductOwner &lt;=&gt; Team</li>
+<li>makes decisions</li>
+</ul></li>
+</ul>
+<p>artifacts:</p>
+<ul>
+<li>User story: consts of cards, conversations and acceptance criteria
+<ul>
+<li>cards: 1 sentence as a requirement “As user role X I want to do Y”</li>
+<li>conversation: all question necessary for understanding of the software</li>
+<li>acceptance criteria: description when a story is considered fully implmented?</li>
+</ul></li>
+<li>product backlog:
+<ul>
+<li>list of all user stories of current sprint</li>
+<li>user stories are prioritized</li>
+</ul></li>
+</ul>
+<p>Evaluation of XP and Scrum:</p>
+<ul>
+<li>very good QS-practices: acceptance test, Unit-test</li>
+<li>very good user validation and user communication: onsite-customer (XP), ProductOwner (Scrum)</li>
+<li>furhter development and maintenance not very well supported due to lack of documentation (XP very little documentation, Scrum user stories not very sufficient)</li>
+<li>adherence to the plan and complience with resources very good:
+<ul>
+<li>XP: 40h week</li>
+<li>Scrum: ScrumManager</li>
+</ul></li>
+<li>too little structure for large projects.</li>
+</ul>
+</section>
+<section id="new-approaches-continuous-software-engineering" class="level5">
+<h5 class="anchored" data-anchor-id="new-approaches-continuous-software-engineering">New Approaches: Continuous Software Engineering</h5>
+<p>A modern software engineering approach emphasizing continuous integration, deployment, and delivery (CI/CD). Developers frequently commit changes, ensuring automated testing and deployment. This enables rapid, reliable software updates and is crucial for DevOps and cloud-native development.</p>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
